@@ -8,6 +8,7 @@ if (state == PlayerState.BOOST) {
     if (boost_timer <= 0) state = PlayerState.NORMAL;
 }
 
+
 // Velocidad por terreno o boost
 var terr = tile_terrain(x, y);
 var max_speed = (terr == "asphalt") ? max_asphalt : max_offroad;
@@ -20,8 +21,8 @@ var right = keyboard_check(vk_right);
 var can_control = (state != PlayerState.OIL) && (state != PlayerState.DEAD);
 
 if (can_control) {
-    if (left)  facing -= turn_rate;
-    if (right) facing += turn_rate;
+    if (left)  facing += turn_rate;
+    if (right) facing -= turn_rate;
 } else if (state == PlayerState.OIL) {
     facing += irandom_range(-3, 3);
 }
@@ -31,7 +32,7 @@ var ax = lengthdir_x(base_accel, facing);
 var ay = lengthdir_y(base_accel, facing);
 vx += ax; vy += ay;
 
-// Fricción cuano se pasa por aceite
+// Fricción cuando se pasa por aceite
 var fric = friction;
 if (state == PlayerState.OIL) fric *= 0.35;
 vx *= (1 - fric * (1 - drift_keep));
@@ -45,9 +46,22 @@ if (spd > max_speed) {
     vy = lengthdir_y(max_speed, dirv);
 }
 
+// Calcula el frente desde el punto trasero
+var front_x = x + lengthdir_x(sprite_height * 0.1, facing);
+var front_y = y + lengthdir_y(sprite_height * 0.1, facing);
+
+if (place_meeting(front_x, front_y, obj_wall)) {
+	move_contact_solid(point_direction(0,0,vx,vy), 0.01);
+	vx = 0;
+	vy = 0;
+}
+
+
 // Movimiento y colisión con bloques
 var nx = x + vx;
 var ny = y + vy;
+
+
 
 if (!place_meeting(nx, ny, obj_Block)) {
     x = nx; y = ny;

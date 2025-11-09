@@ -9,9 +9,9 @@ friction     = 0.20
 drift_keep   = 1.0;  
 
 // Velocidad dependiendo del terreno o si tiene nitro
-max_asphalt  = 7.0;
-max_offroad  = 4.8;
-max_boost    = 11.0;
+max_asphalt  = 5.0;
+max_offroad  = 2.8;
+max_boost    = 7.0;
 
 // Estados temporales
 state = PlayerState.NORMAL;
@@ -20,7 +20,7 @@ boost_timer = 0;
 
 // Para choque de frente
 front_kill_cone = 60;    
-min_kill_speed  = 3.0;   
+min_kill_speed  = 2.0;   
 
 
 sprite_looks_up = false;

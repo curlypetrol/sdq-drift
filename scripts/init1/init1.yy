@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"init1",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"init1",
+  "parent":{
+    "name":"Genetic-Drift",
+    "path":"Genetic-Drift.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
