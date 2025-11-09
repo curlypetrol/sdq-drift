@@ -37,6 +37,16 @@ draw_rectangle(btn3_x, btn3_y, btn3_x + btn_width, btn3_y + btn_height, false);
 draw_set_color(c_black);
 draw_text(room_width / 2, btn3_y + btn_height / 2, "Nivel 3");
 
+/// Botón SALIR AL MENÚ PRINCIPAL
+if (point_in_rectangle(mouse_x, mouse_y, btn_back_x, btn_back_y, btn_back_x + btn_width, btn_back_y + btn_height))
+    draw_set_color(c_yellow);
+else
+    draw_set_color(c_white);
+
+draw_rectangle(btn_back_x, btn_back_y, btn_back_x + btn_width, btn_back_y + btn_height, false);
+draw_set_color(c_black);
+draw_text(room_width / 2, btn_back_y + btn_height / 2, "Salir a menu principal");
+
 /// Botón SALIR
 if (point_in_rectangle(mouse_x, mouse_y, btn_exit_x, btn_exit_y, btn_exit_x + btn_width, btn_exit_y + btn_height))
     draw_set_color(c_yellow);
@@ -45,4 +55,5 @@ else
 
 draw_rectangle(btn_exit_x, btn_exit_y, btn_exit_x + btn_width, btn_exit_y + btn_height, false);
 draw_set_color(c_black);
-draw_text(room_width / 2, btn_exit_y + btn_height / 2, "Salir");
+draw_text(room_width / 2, btn_exit_y + btn_height / 2, "Salir del Juego");
+

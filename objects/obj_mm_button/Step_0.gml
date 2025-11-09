@@ -15,8 +15,5 @@ btn2_y = start_y + gap_y;
 btn3_x = room_width / 2 - btn_width / 2;
 btn3_y = start_y + gap_y * 2;
 
-btn_back_x = room_width / 2 - btn_width / 2;
-btn_back_y = start_y + gap_y * 3;
-
 btn_exit_x = room_width / 2 - btn_width / 2;
-btn_exit_y = start_y + gap_y * 4;
+btn_exit_y = start_y + gap_y * 3;

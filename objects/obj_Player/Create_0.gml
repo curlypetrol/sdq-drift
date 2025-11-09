@@ -9,9 +9,9 @@ friction     = 0.20
 drift_keep   = 1.0;  
 
 // Velocidad dependiendo del terreno o si tiene nitro
-max_asphalt  = 5.0;
-max_offroad  = 2.8;
-max_boost    = 7.0;
+max_asphalt  = 3.8;
+max_offroad  = 2.1;
+max_boost    = 5.4;
 
 // Estados temporales
 state = PlayerState.NORMAL;
@@ -24,3 +24,10 @@ min_kill_speed  = 2.0;
 
 
 sprite_looks_up = false;
+
+race_running  = false;
+race_start_ms = 0;
+race_elapsed_ms = 0;   // ms actuales
+race_best_ms  = -1;    // -1 = aún no hay mejor tiempo
+
+race_elapsed_ms = 0;
