@@ -7,6 +7,18 @@ global.OFFROAD_MAX = 20;
 /// Estados del jugador
 enum PlayerState { NORMAL, OIL, BOOST, DEAD };
 
+/// Devuelve true si si hay un tile en un pixel especíco, sirve para detectar el tipo de terreno en un area
+function tile_on_layer_at(layer_name, xp, yp) {
+    if (!layer_exists(layer_name)) return false;
+
+    var layer_id = layer_get_id(layer_name);
+    var map_id   = layer_tilemap_get_id(layer_id);
+    if (map_id < 0) return false; // no es Tile Layer
+
+    var t = tilemap_get_at_pixel(map_id, xp, yp);
+    return (t != 0); // 0 = sin tile
+}
+
 /// Devuelve los dos tipos de terrenos
 function tile_terrain(xp, yp) {
 
@@ -17,19 +29,6 @@ function tile_terrain(xp, yp) {
         return "offroad";
     }
     return "offroad";
-}
-
-/// Devuelve true si si hay un tile en un pixel especíco, sirve para detectar el tipo de terreno en un area
-function tile_on_layer_at(layer_name, xp, yp) {
-    if (!layer_exists(layer_name)) return false;
-
-    var layer_id = layer_get_id(layer_name);
-    var map_id   = layer_tilemap_get_id(layer_id);
-
-    if (map_id < 0) return false;
-
-    var t = tilemap_get_at_pixel(map_id, xp, yp);
-    return (t != 0);
 }
 
 // Calcular fps
@@ -47,3 +46,23 @@ function player_die(p) {
     // reinicio
     p.alarm[0] = sec_to_steps(1);
 }
+
+// Convierte los milisegubdos a formato de carrera
+function time_format_ms(ms) {
+    if (ms < 0) ms = 0;
+    var total_sec = ms div 1000;
+    var mm = total_sec div 60;
+    var ss = total_sec mod 60;
+    var cc = (ms mod 1000) div 10; // 0..99
+    return string_format(mm, 2, 0) + ":" + string_format(ss, 2, 0) + ":" + string_format(cc, 2, 0);
+}
+
+// Para saber en qué lado de la meta está el jugador
+function side_sign(x0, y0, nx, ny, px, py) {
+    var vx = px - x0;
+    var vy = py - y0;
+    var d  = vx * nx + vy * ny; 
+    return (d > 0) - (d < 0);  
+}
+
+

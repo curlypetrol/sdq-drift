@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite20",
-    "path":"sprites/Sprite20/Sprite20.yy",
+    "name":"spr_menus",
+    "path":"sprites/spr_menus/spr_menus.yy",
   },
   "spriteMaskId":null,
   "visible":true,

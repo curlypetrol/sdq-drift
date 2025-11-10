@@ -47,8 +47,8 @@ if (spd > max_speed) {
 }
 
 // Calcula el frente desde el punto trasero
-var front_x = x + lengthdir_x(sprite_height * 0.1, facing);
-var front_y = y + lengthdir_y(sprite_height * 0.1, facing);
+var front_x = x + lengthdir_x(sprite_height * 0.001, facing);
+var front_y = y + lengthdir_y(sprite_height * 0.001, facing);
 
 if (place_meeting(front_x, front_y, obj_wall)) {
 	move_contact_solid(point_direction(0,0,vx,vy), 0.01);
@@ -60,8 +60,6 @@ if (place_meeting(front_x, front_y, obj_wall)) {
 // Movimiento y colisión con bloques
 var nx = x + vx;
 var ny = y + vy;
-
-
 
 if (!place_meeting(nx, ny, obj_Block)) {
     x = nx; y = ny;
