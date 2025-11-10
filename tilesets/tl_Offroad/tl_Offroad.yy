@@ -18,8 +18,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"spr_TileOffroad",
-    "path":"sprites/spr_TileOffroad/spr_TileOffroad.yy",
+    "name":"Sprite23",
+    "path":"sprites/Sprite23/Sprite23.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
