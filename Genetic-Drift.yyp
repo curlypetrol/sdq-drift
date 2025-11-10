@@ -81,10 +81,10 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
     {"roomId":{"name":"rm_Level1","path":"rooms/rm_Level1/rm_Level1.yy",},},
-    {"roomId":{"name":"rm_Level3","path":"rooms/rm_Level3/rm_Level3.yy",},},
     {"roomId":{"name":"rm_options","path":"rooms/rm_options/rm_options.yy",},},
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
     {"roomId":{"name":"rm_Level2","path":"rooms/rm_Level2/rm_Level2.yy",},},
+    {"roomId":{"name":"rm_Level3","path":"rooms/rm_Level3/rm_Level3.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

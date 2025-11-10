@@ -61,8 +61,6 @@ if (place_meeting(front_x, front_y, obj_wall)) {
 var nx = x + vx;
 var ny = y + vy;
 
-
-
 if (!place_meeting(nx, ny, obj_Block)) {
     x = nx; y = ny;
 } else {

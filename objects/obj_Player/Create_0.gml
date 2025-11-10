@@ -19,7 +19,7 @@ oil_timer = 0;
 boost_timer = 0;
 
 // Para choque de frente
-front_kill_cone = 60;    
+front_kill_cone = 50;    
 min_kill_speed  = 2.0;   
 
 

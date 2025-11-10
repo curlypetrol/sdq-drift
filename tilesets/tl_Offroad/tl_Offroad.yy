@@ -17,7 +17,10 @@
   },
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_TileOffroad",
+    "path":"sprites/spr_TileOffroad/spr_TileOffroad.yy",
+  },
   "spriteNoExport":false,
   "textureGroupId":{
     "name":"Default",
