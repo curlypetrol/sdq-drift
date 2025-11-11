@@ -1,26 +1,28 @@
-// Dirección y velocidad
-facing = 0;         
+
+facing = 0;         
 vx = 0; vy = 0;
 
-// Para controlar la aceleración y derrape
-base_accel   = 0.25;
-turn_rate    = 3.0;   
-friction     = 0.20  
-drift_keep   = 1.0;  
+base_accel   = 0.25;
+turn_rate    = 3.0;   
+friction     = 0.20  
+drift_keep   = 1.0;  
 
-// Velocidad dependiendo del terreno o si tiene nitro
-max_asphalt  = 4.0;
-max_offroad  = 2.8;
-max_boost    = 6.0;
+max_asphalt  = 4.2;
+max_offroad  = 2.8;
+max_boost    = 5.8;
 
-// Estados temporales
 state = PlayerState.NORMAL;
 oil_timer = 0;
 boost_timer = 0;
 
-// Para choque de frente
-front_kill_cone = 60;    
-min_kill_speed  = 2.0;   
-
+front_kill_cone = 50;    
+min_kill_speed  = 2.0;   
 
 sprite_looks_up = false;
+
+// Variables para guardar los sonidos en bucle
+engine_sound_inst = noone;
+brake_sound_inst = noone;
+
+engine_sound_inst = audio_play_sound(snd_acceleration, 1, true);
+audio_sound_gain(engine_sound_inst, 0, 0);
