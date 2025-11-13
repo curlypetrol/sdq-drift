@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite21",
-    "path":"sprites/Sprite21/Sprite21.yy",
+    "name":"spr_ExitButton",
+    "path":"sprites/spr_ExitButton/spr_ExitButton.yy",
   },
   "spriteMaskId":null,
   "visible":true,
