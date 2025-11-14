@@ -4,7 +4,7 @@ draw_set_valign(fa_middle);
 
 // Título
 draw_set_color(c_white);
-draw_text(room_width / 2, 80, "Genetic Drift");
+draw_text(room_width / 2, 80, "SDQ Drift");
 
 // Función rápida para dibujar botón (sin funciones reales, solo repetición)
 /// Botón 1 - Jugar

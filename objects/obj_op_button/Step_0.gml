@@ -3,8 +3,8 @@ btn_width  = 200;
 btn_height = 60;
 
 // Espaciado y posiciones (centrados)
-start_y = 200;      // posición Y de la fila principal
-gap_y   = 120;      // separación hacia el botón de volver
+start_y = 300;      // posición Y de la fila principal
+gap_y   = 150;      // separación hacia el botón de volver
 
 // Fila: [Vueltas][ - ][ valor ][ + ]
 label_w = 200;  label_h = 60;   // rectángulo "Vueltas"
