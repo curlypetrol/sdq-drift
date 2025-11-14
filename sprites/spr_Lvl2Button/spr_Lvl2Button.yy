@@ -2,24 +2,24 @@
   "$GMSprite":"v2",
   "%Name":"spr_Lvl2Button",
   "bboxMode":0,
-  "bbox_bottom":129,
+  "bbox_bottom":150,
   "bbox_left":0,
-  "bbox_right":491,
-  "bbox_top":0,
+  "bbox_right":549,
+  "bbox_top":1,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"85a2486e-99e4-4deb-bf24-c344f6e71545","name":"85a2486e-99e4-4deb-bf24-c344f6e71545","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6d9fc288-da1d-4614-b95a-a3761cd83509","name":"6d9fc288-da1d-4614-b95a-a3761cd83509","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":130,
+  "height":153,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"82b6c1e4-703a-4f8d-b489-3bf003630f53","blendMode":0,"displayName":"default","isLocked":false,"name":"82b6c1e4-703a-4f8d-b489-3bf003630f53","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"50197cd7-abed-489c-9027-cd704f724beb","blendMode":0,"displayName":"default","isLocked":false,"name":"50197cd7-abed-489c-9027-cd704f724beb","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_Lvl2Button",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"85a2486e-99e4-4deb-bf24-c344f6e71545","path":"sprites/spr_Lvl2Button/spr_Lvl2Button.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"06a7f110-b5e2-46d6-9d2d-8ca49278ecf1","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6d9fc288-da1d-4614-b95a-a3761cd83509","path":"sprites/spr_Lvl2Button/spr_Lvl2Button.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"db1c5d54-a02d-491e-96e1-e1d87aae7adb","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":494,
+  "width":550,
 }

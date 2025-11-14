@@ -2,24 +2,24 @@
   "$GMSprite":"v2",
   "%Name":"spr_ExitGameButton",
   "bboxMode":0,
-  "bbox_bottom":204,
+  "bbox_bottom":43,
   "bbox_left":0,
-  "bbox_right":599,
-  "bbox_top":1,
+  "bbox_right":127,
+  "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"3f0c0dd3-93aa-4f4a-a9d0-444caa95a7b4","name":"3f0c0dd3-93aa-4f4a-a9d0-444caa95a7b4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6fa1a1e1-0c1a-48fd-9ba2-a0c3c31b25cd","name":"6fa1a1e1-0c1a-48fd-9ba2-a0c3c31b25cd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":205,
+  "height":44,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"9924eb74-3793-44ea-8c26-72fef4fd0f29","blendMode":0,"displayName":"default","isLocked":false,"name":"9924eb74-3793-44ea-8c26-72fef4fd0f29","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"cdc6350d-a955-41c9-a093-bbcd1d59f5f6","blendMode":0,"displayName":"default","isLocked":false,"name":"cdc6350d-a955-41c9-a093-bbcd1d59f5f6","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_ExitGameButton",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3f0c0dd3-93aa-4f4a-a9d0-444caa95a7b4","path":"sprites/spr_ExitGameButton/spr_ExitGameButton.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"c8931e94-7d89-4d39-ae60-b721f46e78df","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6fa1a1e1-0c1a-48fd-9ba2-a0c3c31b25cd","path":"sprites/spr_ExitGameButton/spr_ExitGameButton.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"d2decea2-e08a-494a-99de-2646eb1d4859","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":600,
+  "width":128,
 }

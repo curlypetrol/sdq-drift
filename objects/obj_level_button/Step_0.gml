@@ -3,8 +3,8 @@ btn_width  = 200;
 btn_height = 60;
 
 // Espaciado y posiciones (centrados)
-start_y = 180;      // posición Y del primer botón
-gap_y   = 100;      // separación entre botones
+start_y = 260;      // posición Y del primer botón
+gap_y   = 100      // separación entre botones
 
 btn1_x = room_width / 2 - btn_width / 2;
 btn1_y = start_y;
