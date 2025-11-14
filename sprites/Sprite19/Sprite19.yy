@@ -19,7 +19,7 @@
   "height":20,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"b0a2bab5-cc49-40f0-aed3-c1e72c884d62","blendMode":0,"displayName":"default","isLocked":false,"name":"b0a2bab5-cc49-40f0-aed3-c1e72c884d62","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"b0a2bab5-cc49-40f0-aed3-c1e72c884d62","blendMode":0,"displayName":"default","isLocked":false,"name":"b0a2bab5-cc49-40f0-aed3-c1e72c884d62","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
   ],
   "name":"Sprite19",
   "nineSlice":null,
