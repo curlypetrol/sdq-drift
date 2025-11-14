@@ -47,7 +47,7 @@ function player_die(p) {
     p.alarm[0] = sec_to_steps(1);
 }
 
-// Convierte los milisegubdos a formato de carrera
+// Convierte los milisegundos a formato de carrera
 function time_format_ms(ms) {
     if (ms < 0) ms = 0;
     var total_sec = ms div 1000;
