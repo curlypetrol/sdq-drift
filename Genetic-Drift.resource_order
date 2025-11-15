@@ -2,10 +2,13 @@
   "FolderOrderSettings":[],
   "ResourceOrderSettings":[
     {"name":"obj_menu_control","order":6,"path":"objects/obj_menu_control/obj_menu_control.yy",},
+    {"name":"Object23","order":68,"path":"objects/Object23/Object23.yy",},
     {"name":"snd_acceleration","order":1,"path":"sounds/snd_acceleration/snd_acceleration.yy",},
+    {"name":"snd_booster","order":70,"path":"sounds/snd_booster/snd_booster.yy",},
     {"name":"snd_brake","order":2,"path":"sounds/snd_brake/snd_brake.yy",},
     {"name":"snd_crash","order":3,"path":"sounds/snd_crash/snd_crash.yy",},
     {"name":"snd_menu","order":5,"path":"sounds/snd_menu/snd_menu.yy",},
+    {"name":"snd_oil","order":69,"path":"sounds/snd_oil/snd_oil.yy",},
     {"name":"snd_ready_go","order":4,"path":"sounds/snd_ready_go/snd_ready_go.yy",},
     {"name":"spr_1","order":34,"path":"sprites/spr_1/spr_1.yy",},
     {"name":"spr_10","order":33,"path":"sprites/spr_10/spr_10.yy",},
