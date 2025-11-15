@@ -64,6 +64,7 @@
     {"id":{"name":"spr_7","path":"sprites/spr_7/spr_7.yy",},},
     {"id":{"name":"spr_8","path":"sprites/spr_8/spr_8.yy",},},
     {"id":{"name":"spr_9","path":"sprites/spr_9/spr_9.yy",},},
+    {"id":{"name":"spr_BackButton","path":"sprites/spr_BackButton/spr_BackButton.yy",},},
     {"id":{"name":"spr_Block","path":"sprites/spr_Block/spr_Block.yy",},},
     {"id":{"name":"spr_Block1","path":"sprites/spr_Block1/spr_Block1.yy",},},
     {"id":{"name":"spr_Boost","path":"sprites/spr_Boost/spr_Boost.yy",},},
