@@ -8,8 +8,8 @@
   "name":"obj_Boost",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Booster",
+    "path":"folders/Booster.yy",
   },
   "parentObjectId":null,
   "persistent":false,

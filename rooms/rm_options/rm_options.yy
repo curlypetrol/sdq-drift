@@ -24,8 +24,8 @@
   ],
   "name":"rm_options",
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Menu",
+    "path":"folders/Menu.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -6,8 +6,8 @@
   "name":"obj_wall",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Wall",
+    "path":"folders/Wall.yy",
   },
   "parentObjectId":null,
   "persistent":false,

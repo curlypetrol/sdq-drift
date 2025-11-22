@@ -12,8 +12,8 @@
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Asphalt",
+    "path":"folders/Levels/Asphalt.yy",
   },
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",

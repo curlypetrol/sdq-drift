@@ -44,8 +44,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Player",
+    "path":"folders/Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

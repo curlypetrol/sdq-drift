@@ -4,6 +4,24 @@ global.ASPHALT_MAX = 10;
 global.OFFROAD_MIN = 11;
 global.OFFROAD_MAX = 20;
 
+global.nn_config = {
+	"x1": true,	
+	"x2": true,	
+	"x3": true,	
+	"x4": true,	
+	"x5": true,	
+	"h1": 0,
+	"h2": 3,
+	"h3": 0,
+	"h4": 0,
+	"h5": 1,
+	"n": 50,
+	"hdet": 500,
+	"vdet": 500,
+	"mut": 25,
+	"select": 60
+}
+
 /// Estados del jugador
 enum PlayerState { NORMAL, OIL, BOOST, DEAD };
 
@@ -64,5 +82,3 @@ function side_sign(x0, y0, nx, ny, px, py) {
     var d  = vx * nx + vy * ny; 
     return (d > 0) - (d < 0);  
 }
-
-

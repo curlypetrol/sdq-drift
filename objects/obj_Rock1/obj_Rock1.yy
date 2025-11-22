@@ -8,8 +8,8 @@
   "name":"obj_Rock1",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Block",
+    "path":"folders/Block.yy",
   },
   "parentObjectId":null,
   "persistent":false,

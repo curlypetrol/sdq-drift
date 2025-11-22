@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_booster",
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Booster",
+    "path":"folders/Booster.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_brake",
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Player",
+    "path":"folders/Player.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

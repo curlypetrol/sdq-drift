@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"init",
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Game",
+    "path":"folders/Game.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
