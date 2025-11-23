@@ -14,10 +14,13 @@ genes = ds_list_create();
 
 // Crea bot
 function create_bot(_hue = noone) {
+	
     var _bot = instance_create_layer(x, y, "Instances", obj_bot);
     _bot.hue_shift = (_hue == noone) ? random_range(0, 360) : _hue;
     _bot.log_stats = false;
+	show_debug_message("Creating Bot | Hue:" + string(_bot.hue_shift))
     return _bot;
+	
 }
 
 // Inicializa población
@@ -194,7 +197,7 @@ function next_gen() {
             
             // Si es el mejor absoluto, le ponemos la corona y activamos debug
             if (i == elite_index){
-                new_parent.crown.visible = true;
+                // new_parent.crown.visible = true;
                 new_parent.log_stats = true;    
             }
             ds_list_add(bots, new_parent);
@@ -239,7 +242,13 @@ function next_gen() {
     ds_list_clear(genes);     // Limpiamos los genes viejos para la nueva ronda
 
     n_generations += 1;
-    
+	show_debug_message("Best W of Gen:" + string(best_gene.weights))
+	show_debug_message("Best B of Gen:" + string(best_gene.biases))
+	show_debug_message("Best Reward:" + string(best_reward))
+	show_debug_message("Genes size: " + string(ds_list_size(genes)));
+	show_debug_message("best_gene is noone? " + string(best_gene == noone));
+
+	
     // Si tu juego necesita reiniciar obstáculos:
     // room_restart();
 }

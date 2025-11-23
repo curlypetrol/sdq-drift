@@ -1,4 +1,3 @@
-
 facing = 0;         
 vx = 0; vy = 0;
 
