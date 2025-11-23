@@ -14,7 +14,7 @@ genes = ds_list_create();
 
 // Crea bot
 function create_bot(_hue = noone) {
-    var _bot = instance_create_layer(x, y, "Instances", obj_Player);
+    var _bot = instance_create_layer(x, y, "Instances", obj_bot);
     _bot.hue_shift = (_hue == noone) ? random_range(0, 360) : _hue;
     _bot.log_stats = false;
     return _bot;
@@ -155,57 +155,93 @@ function select_parents(_genes) {
 
 
 // Nueva generación
+// Nueva generación
 function next_gen() {
 
     update_best_gene();
-	
-	parents = ds_list_create();
-	parents = select_top(bots, select_pct);
-	
-	var _size_parents = ds_list_size(parents);
-	ds_list_clear(bots);
-	var elite_index = ds_list_find_index(parents, best_gene);
-	
-    // Crear hijos mediante selección, crossover y mutación
-    for (var i = 0; i < n_bots - 1; i++) {
-		if (i < _size_parents){
-			
-			var new_parent = create_bot(parents[i].hue);
-			new_parent.neural_network.net.weights = parents[i].weights;
-			new_parent.neural_network.net.biases = parents[i].biases
-			
-			// Si el padre que tenemos es el mejor, le agregamos la coronita
-			if (i == elite_index){
-				new_parent.crown.visible = true;
-				new_parent.log_stats = true;	
-			}
-			ds_list_add(bots, new_parent);
-			continue
-		}
-		
-        var parents_crossing = select_parents(parents);
-		var p1 = parents[0]
-		var p2 = parents[1]
-		
-		// Cruce
-        var child_weights = crossover_matrix_one_point(p1.weights, p2.weights);
-		var child_biases = crossover_matrix_one_point(p1.biases, p2.biases);
+    
+    // 1. CORRECCIÓN: Usar 'genes' en lugar de 'bots'
+    // 'genes' tiene la info guardada al morir. 'bots' son instancias activas (que ya no sirven aquí).
+    // select_top devuelve un ARRAY.
+    var _top_array = select_top(genes, select_pct);
+    
+    // 2. CORRECCIÓN: Convertir Array a DS List
+    // Para que las funciones select_parents y ds_list_size funcionen, necesitamos una lista.
+    parents = ds_list_create();
+    for (var k = 0; k < array_length(_top_array); k++) {
+        ds_list_add(parents, _top_array[k]);
+    }
+    
+    var _size_parents = ds_list_size(parents); // Ahora sí funciona porque es una lista
+    
+    // Limpiar bots anteriores
+    ds_list_clear(bots);
+    
+    // Buscar al mejor (Elite)
+    var elite_index = ds_list_find_index(parents, best_gene);
+    
+    // --- BUCLE DE CREACIÓN DE NUEVA POBLACIÓN ---
+    for (var i = 0; i < n_bots; i++) {
         
-		// Mutacion
-		child_weights = random_bias_mutate(child_weights, mutation_prob, -0.75, 0.75, -1, 1);
-		child_biases = random_bias_mutate(child_biases, mutation_prob, -0.75, 0.75, -1, 1);
+        // A) ELITISMO: Los mejores pasan directo sin cambios
+        if (i < _size_parents) {
+            var _parent_data = parents[| i]; // Accedemos a la lista con accesores
+            
+            var new_parent = create_bot(_parent_data.hue);
+            // Copiamos los pesos directamente
+            new_parent.neural_network.net.weights = _parent_data.weights;
+            new_parent.neural_network.net.biases = _parent_data.biases;
+            
+            // Si es el mejor absoluto, le ponemos la corona y activamos debug
+            if (i == elite_index){
+                new_parent.crown.visible = true;
+                new_parent.log_stats = true;    
+            }
+            ds_list_add(bots, new_parent);
+            continue;
+        }
+        
+        // B) REPRODUCCIÓN: Cruce y Mutación para el resto
+        
+        // Seleccionamos 2 padres aleatorios de la lista de 'parents'
+        var parents_crossing = select_parents(parents);
+        var p1 = parents_crossing[0];
+        var p2 = parents_crossing[1];
+        
+        // 3. CORRECCIÓN: Usar la función helper 'crossover_gene'
+        // Antes estabas llamando a crossover_matrix... directamente sobre el array de pesos,
+        // lo cual daría error. crossover_gene maneja el bucle por capas.
+        var child_struct = crossover_gene(p1, p2); 
+        var child_weights = child_struct.weights;
+        var child_biases = child_struct.biases;
+        
+        // 4. CORRECCIÓN: Mutación por capas
+        // child_weights es un array de matrices. Debemos mutar capa por capa.
+        var _layers_count = array_length(child_weights);
+        for(var lay = 0; lay < _layers_count; lay++) {
+             // Asumiendo que ya creaste el script random_bias_mutate que te pasé antes
+             child_weights[lay] = random_bias_mutate(child_weights[lay], mutation_prob, -0.75, 0.75, -1, 1);
+             child_biases[lay] = random_bias_mutate(child_biases[lay], mutation_prob, -0.75, 0.75, -1, 1);
+        }
 
         var bot = create_bot();
         bot.neural_network.net.weights = child_weights;
         bot.neural_network.net.biases = child_biases;
+        
+        // Opcional: Mezclar color
+        bot.image_blend = merge_color(p1.hue, p2.hue, 0.5);
 
         ds_list_add(bots, bot);
     }
 
-    // Limpiar genes para la próxima gen
-    ds_list_clear(genes);
+    // Limpieza de memoria
+    ds_list_destroy(parents); // Ya usamos la lista, la borramos
+    ds_list_clear(genes);     // Limpiamos los genes viejos para la nueva ronda
 
     n_generations += 1;
+    
+    // Si tu juego necesita reiniciar obstáculos:
+    // room_restart();
 }
 
 // Inicializar primera generación

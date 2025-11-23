@@ -15,9 +15,19 @@ var terr = tile_terrain(x, y);
 var max_speed = (terr == "asphalt") ? max_asphalt : max_offroad;
 if (state == PlayerState.BOOST) max_speed = max_boost;
 
-// Controlar dirección de vehículo
-var left  = keyboard_check(vk_left);
-var right = keyboard_check(vk_right);
+// Movimiento del jugador si es humano o es bot
+var left = false;
+var right = false;
+
+if (variable_instance_exists(id, "is_bot") && is_bot) {
+   
+    left = variable_instance_exists(id, "ai_left") ? ai_left : false;
+    right = variable_instance_exists(id, "ai_right") ? ai_right : false;
+} 
+else {
+    left = keyboard_check(vk_left);
+    right = keyboard_check(vk_right);
+}
 
 
 var can_control = (state != PlayerState.OIL) && (state != PlayerState.DEAD) && (obj_Game.race_running);
@@ -56,24 +66,41 @@ if (spd > max_speed) {
 
 var engine_vol = spd / max_asphalt;
 engine_vol = clamp(engine_vol, 0.1, 1.0);
-audio_sound_gain(engine_sound_inst, engine_vol, 0);
+
+if (audio_is_playing(engine_sound_inst)) {
+    audio_sound_gain(engine_sound_inst, engine_vol, 0);
+}
 
 
 
 var is_braking = (left || right) && (spd > 1.0) && can_control;
 
 if (is_braking) {
-    if (!audio_is_playing(brake_sound_inst)) {
-        brake_sound_inst = audio_play_sound(snd_brake, 5, true);
-    }
-    var brake_vol = clamp(spd / max_asphalt, 0.3, 1.0);
-    audio_sound_gain(brake_sound_inst, brake_vol, 0);
+    // 1. Intentar reproducir sonido de derrape/freno
+    if (!audio_is_playing(brake_sound_inst)) {
+        // OPTIMIZACIÓN: Solo reproducir si es Humano (!is_bot) O si es el Bot Elite (log_stats)
+        // Esto evita que 20 bots saturen el audio
+        var _should_play = !is_bot;
+        if (variable_instance_exists(id, "log_stats") && log_stats) _should_play = true;
+        
+        if (_should_play) {
+            brake_sound_inst = audio_play_sound(snd_brake, 5, true);
+        }
+    }
+    
+    // 2. Ajustar volumen (SOLUCIÓN DEL ERROR)
+    // Solo ajustamos la ganancia si el sonido REALMENTE se está reproduciendo
+    if (audio_is_playing(brake_sound_inst)) {
+        var brake_vol = clamp(spd / max_asphalt, 0.3, 1.0);
+        audio_sound_gain(brake_sound_inst, brake_vol, 0);
+    }
 
 } else {
-    if (audio_is_playing(brake_sound_inst)) {
-        audio_stop_sound(brake_sound_inst);
-        brake_sound_inst = noone; 
-    }
+    // Detener sonido si dejamos de frenar
+    if (audio_is_playing(brake_sound_inst)) {
+        audio_stop_sound(brake_sound_inst);
+        brake_sound_inst = noone; 
+    }
 }
 
 var front_x = x + lengthdir_x(sprite_height * 0.001, facing);

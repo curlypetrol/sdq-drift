@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_Rock",
+  "%Name":"obj_neural_network",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_Rock",
+  "name":"obj_neural_network",
   "overriddenProperties":[],
   "parent":{
-    "name":"Block",
-    "path":"folders/Block.yy",
+    "name":"Neural Network",
+    "path":"folders/Neural Network.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,11 +28,8 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":true,
-  "spriteId":{
-    "name":"spr_BoulderRock",
-    "path":"sprites/spr_BoulderRock/spr_BoulderRock.yy",
-  },
+  "solid":false,
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
