@@ -8,8 +8,8 @@
   "name":"obj_Goal1",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Road",
+    "path":"folders/Levels/Road.yy",
   },
   "parentObjectId":null,
   "persistent":false,

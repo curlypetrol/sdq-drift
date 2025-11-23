@@ -9,8 +9,8 @@
   "name":"obj_Game1",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Game",
+    "path":"folders/Game.yy",
   },
   "parentObjectId":null,
   "persistent":false,

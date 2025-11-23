@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_ready_go",
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Road",
+    "path":"folders/Levels/Road.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -8,8 +8,8 @@
   "name":"obj_Oil",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Oil",
+    "path":"folders/Oil.yy",
   },
   "parentObjectId":null,
   "persistent":false,

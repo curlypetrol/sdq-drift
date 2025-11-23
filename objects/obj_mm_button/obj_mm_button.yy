@@ -10,8 +10,8 @@
   "name":"obj_mm_button",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Buttons",
+    "path":"folders/Buttons.yy",
   },
   "parentObjectId":null,
   "persistent":false,

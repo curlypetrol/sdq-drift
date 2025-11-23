@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_oil",
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Oil",
+    "path":"folders/Oil.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

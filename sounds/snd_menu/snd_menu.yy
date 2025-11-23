@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_menu",
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Menu",
+    "path":"folders/Menu.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

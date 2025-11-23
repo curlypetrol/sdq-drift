@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Oil",
+    "path":"folders/Oil.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

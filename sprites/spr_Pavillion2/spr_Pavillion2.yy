@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Road",
+    "path":"folders/Levels/Road.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

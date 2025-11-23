@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Menu",
+    "path":"folders/Menu.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

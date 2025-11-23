@@ -9,8 +9,8 @@
   "name":"obj_menu_control",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Menu",
+    "path":"folders/Menu.yy",
   },
   "parentObjectId":null,
   "persistent":false,

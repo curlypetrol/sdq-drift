@@ -44,8 +44,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Wall",
+    "path":"folders/Wall.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

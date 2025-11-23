@@ -9,8 +9,8 @@
   "name":"obj_exitButton",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Buttons",
+    "path":"folders/Buttons.yy",
   },
   "parentObjectId":null,
   "persistent":false,

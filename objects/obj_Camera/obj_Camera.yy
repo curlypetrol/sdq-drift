@@ -9,8 +9,8 @@
   "name":"obj_Camera",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic-Drift",
-    "path":"Genetic-Drift.yyp",
+    "name":"Camera",
+    "path":"folders/Camera.yy",
   },
   "parentObjectId":null,
   "persistent":false,
