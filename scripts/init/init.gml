@@ -82,3 +82,22 @@ function side_sign(x0, y0, nx, ny, px, py) {
     var d  = vx * nx + vy * ny; 
     return (d > 0) - (d < 0);  
 }
+
+global.nn_config = {
+    // Inputs (Máscaras para dibujar debug, todos true para empezar)
+    "x1": true, "x2": true, "x3": true, "x4": true, "x5": true,
+    "x6": true, "x7": true, "x8": true, "x9": true, "x10": true,
+    
+    "inputs": 10,   // 10 Sensores
+    "h1": 8,        // 8 Neuronas capa oculta
+    "outputs": 2,   // 2 Salidas (Izquierda, Derecha)
+    
+    "n": 20,        // Población
+    "mut": 0.1,     // Probabilidad mutación (10%)
+    "select": 0.5,  // Porcentaje selección
+    "sensor_range": 400 // Rango de visión
+};
+
+global.aspect_ratio = display_get_gui_width() / display_get_gui_height();
+
+global.debug = true;
