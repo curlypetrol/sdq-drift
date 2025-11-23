@@ -4,24 +4,6 @@ global.ASPHALT_MAX = 10;
 global.OFFROAD_MIN = 11;
 global.OFFROAD_MAX = 20;
 
-global.nn_config = {
-	"x1": true,	
-	"x2": true,	
-	"x3": true,	
-	"x4": true,	
-	"x5": true,	
-	"h1": 0,
-	"h2": 3,
-	"h3": 0,
-	"h4": 0,
-	"h5": 1,
-	"n": 50,
-	"hdet": 500,
-	"vdet": 500,
-	"mut": 25,
-	"select": 60
-}
-
 /// Estados del jugador
 enum PlayerState { NORMAL, OIL, BOOST, DEAD };
 
@@ -82,3 +64,22 @@ function side_sign(x0, y0, nx, ny, px, py) {
     var d  = vx * nx + vy * ny; 
     return (d > 0) - (d < 0);  
 }
+
+global.nn_config = {
+    // Inputs (Máscaras para dibujar debug, todos true para empezar)
+    "x1": true, "x2": true, "x3": true, "x4": true, "x5": true,
+    "x6": true, "x7": true, "x8": true, "x9": true, "x10": true,
+    
+    "inputs": 10,   // 10 Sensores
+    "h1": 8,        // 8 Neuronas capa oculta
+    "outputs": 2,   // 2 Salidas (Izquierda, Derecha)
+    
+    "n": 5,        // Población
+    "mut": 60,     // Probabilidad mutación (10%)
+    "select": 50,  // Porcentaje selección
+    "sensor_range": 400 // Rango de visión
+};
+
+global.aspect_ratio = display_get_gui_width() / display_get_gui_height();
+
+global.debug = true;
