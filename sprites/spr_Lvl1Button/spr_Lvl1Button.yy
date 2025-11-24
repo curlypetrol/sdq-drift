@@ -2,9 +2,9 @@
   "$GMSprite":"v2",
   "%Name":"spr_Lvl1Button",
   "bboxMode":0,
-  "bbox_bottom":147,
+  "bbox_bottom":33,
   "bbox_left":0,
-  "bbox_right":548,
+  "bbox_right":127,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":148,
+  "height":34,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"e36d7cfa-e59a-43d5-a02c-d8e265a71a00","blendMode":0,"displayName":"default","isLocked":false,"name":"e36d7cfa-e59a-43d5-a02c-d8e265a71a00","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":550,
+  "width":128,
 }
