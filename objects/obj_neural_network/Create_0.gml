@@ -82,7 +82,7 @@ mask_x = [
     global.nn_config[$ "x1"], global.nn_config[$ "x2"], global.nn_config[$ "x3"],
     global.nn_config[$ "x4"], global.nn_config[$ "x5"], global.nn_config[$ "x6"],
     global.nn_config[$ "x7"], global.nn_config[$ "x8"], global.nn_config[$ "x9"],
-    global.nn_config[$ "x10"]
+    global.nn_config[$ "x10"], global.nn_config[$ "x11"] 
 ];
 
 // Calcular inputs activos
@@ -90,7 +90,7 @@ var _active_inputs = array_filter_by_mask(mask_x, mask_x);
 n_inputs = array_length(_active_inputs);
 
 // Validar inputs
-if (n_inputs == 0) n_inputs = 10; 
+if (n_inputs == 0) n_inputs = 11; 
 
 // Filtrar capas vacías
 var _active_hidden_layers = [];

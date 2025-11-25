@@ -1,3 +1,5 @@
+fitness = (checkpoints_passed * 10) + (time_alive * 0.01);
+fitness = (checkpoints_passed * 10);
 // Exportar genes
 if (instance_exists(neural_network) && instance_exists(obj_genetic_algorithm)) {
     
@@ -19,16 +21,8 @@ if (instance_exists(neural_network) && instance_exists(obj_genetic_algorithm)) {
     instance_destroy(neural_network);
 }
 
-// Limpieza visualizador
-if (instance_exists(nn_viewer)) {
-    instance_destroy(nn_viewer);
-}
+obj_genetic_algorithm.bots_alive--
 
-// Fin de ronda
-if (instance_number(obj_bot) <= 1) { 
-    if (instance_exists(obj_genetic_algorithm)) {
-        with(obj_genetic_algorithm) {
-            next_gen(); // Siguiente gen
-        }
-    }
+if(instance_number(obj_bot) == 1){
+	obj_genetic_algorithm.next_gen()
 }

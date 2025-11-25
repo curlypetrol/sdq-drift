@@ -3,7 +3,7 @@ vx = 0; vy = 0;
 
 base_accel   = 0.25;
 turn_rate    = 3.0;   
-friction     = 0.20  
+friction_val = 0.20  
 drift_keep   = 1.0;  
 
 max_asphalt  = 4.2;
@@ -31,6 +31,9 @@ if (audio_is_playing(engine_sound_inst)) {
     audio_sound_gain(engine_sound_inst, 0, 0);
 }
 
-is_bot = false;
-ai_left = false;
-ai_right = false;
+input_left = false;
+input_right = false;
+
+// Configuración de colisión
+front_kill_cone = 50;
+min_kill_speed = 2.0;

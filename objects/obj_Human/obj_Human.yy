@@ -1,20 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_genetic_algorithm",
+  "%Name":"obj_Human",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":112,"eventType":5,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_genetic_algorithm",
+  "name":"obj_Human",
   "overriddenProperties":[],
   "parent":{
-    "name":"Genetic Algorithm",
-    "path":"folders/Genetic Algorithm.yy",
+    "name":"Player",
+    "path":"folders/Player.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_Player",
+    "path":"objects/obj_Player/obj_Player.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_Player",
+    "path":"sprites/spr_Player/spr_Player.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

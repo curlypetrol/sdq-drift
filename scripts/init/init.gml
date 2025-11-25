@@ -5,7 +5,7 @@ global.OFFROAD_MIN = 11;
 global.OFFROAD_MAX = 20;
 
 /// Estados del jugador
-enum PlayerState { NORMAL, OIL, BOOST, DEAD };
+enum PlayerState { NORMAL, OIL, BOOST, DEAD, STOPPED };
 
 /// Devuelve true si si hay un tile en un pixel especíco, sirve para detectar el tipo de terreno en un area
 function tile_on_layer_at(layer_name, xp, yp) {
@@ -69,17 +69,29 @@ global.nn_config = {
     // Inputs (Máscaras para dibujar debug, todos true para empezar)
     "x1": true, "x2": true, "x3": true, "x4": true, "x5": true,
     "x6": true, "x7": true, "x8": true, "x9": true, "x10": true,
+	"x11": true,
     
     "inputs": 10,   // 10 Sensores
     "h1": 8,        // 8 Neuronas capa oculta
-    "outputs": 2,   // 2 Salidas (Izquierda, Derecha)
-    
-    "n": 5,        // Población
-    "mut": 60,     // Probabilidad mutación (10%)
-    "select": 50,  // Porcentaje selección
-    "sensor_range": 400 // Rango de visión
+    "h2": 4,
+	"h3": 6,
+	"h4": 2,
+	"outputs": 2,   // 2 Salidas (Izquierda, Derecha)
+	"sensor_range": 400 // Rango de visión
+};
+
+global.ga_config = {
+	
+	"n": 50,        // Población
+    "mut": 20,     // Probabilidad mutación (10%)
+    "select": 60,  // Porcentaje selección
+	"time_alive": 5 // Segundos para matar un poblador si se atasca
 };
 
 global.aspect_ratio = display_get_gui_width() / display_get_gui_height();
 
+global.debug = true;
+
+global.aspect_ratio = display_get_gui_width() / display_get_gui_height();
+global.show_debug_rays = false;
 global.debug = true;
