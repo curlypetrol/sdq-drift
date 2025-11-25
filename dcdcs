@@ -1,0 +1,56 @@
+* [33m28037cf[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mdev[m[33m)[m [feat] Genetic Algoritmh implemented
+* [33m9f2b01a[m[33m ([m[1;31msarah/dev[m[33m, [m[1;31msarah/ai_dev[m[33m, [m[1;31morigin/ai_dev[m[33m)[m [add] finished installing sounds, fixed retrat level after DEA, finished Designs Level 2 and 3
+* [33m6d42d09[m [add] Pending Menu Sprites, Menu Rooms Completed
+* [33mdd1c2f0[m [add] Menu Design Almost Complete
+* [33m03cc5b2[m Delete sprites/spr_SDQ_Drift_Level_Selection/readme.md
+*   [33m82e28d0[m Merge pull request #6 from curlypetrol/curlypetrol-menu_patch1
+[32m|[m[33m\[m  
+[32m|[m * [33m290ba68[m Add files via upload
+[32m|[m * [33m8afbdcb[m Create readme.md
+[32m|[m * [33mbe0d346[m Add files via upload
+[32m|[m * [33m69e36a4[m Add files via upload
+[32m|[m * [33m55882fd[m Add files via upload
+[32m|[m * [33mf3a5e8f[m Add files via upload
+[32m|[m * [33m198e3c2[m Add files via upload
+[32m|[m * [33m14f7892[m Add files via upload
+[32m|[m * [33m63af1d0[m Add files via upload
+[32m|[m * [33me83490d[m Add files via upload
+[32m|[m * [33m13b18f1[m [add] Menu Design 95%
+[32m|[m[32m/[m  
+*   [33m9666a7b[m Merge pull request #5 from curlypetrol/curly-dev-env2
+[34m|[m[35m\[m  
+[34m|[m * [33m0a1a083[m Add files via upload
+[34m|[m * [33m1b8a599[m Add files via upload
+[34m|[m * [33mea5f41d[m Add files via upload
+[34m|[m * [33m9d4e2ac[m Create readme.md
+[34m|[m * [33mae02c28[m Add files via upload
+[34m|[m * [33maf7dbfa[m Add files via upload
+[34m|[m * [33m2d3165c[m [feat] Level 1 Design Completed
+[34m|[m[34m/[m  
+*   [33me191fc6[m Merge pull request #4 from curlypetrol/cp-alpha-env
+[36m|[m[1;31m\[m  
+[36m|[m * [33m1b85103[m [add] FX sounds
+[36m|[m * [33md4e241c[m [feat] Add FXSounds
+[36m|[m[36m/[m  
+*   [33m23fc08d[m Merge pull request #3 from Hector-RU/dev
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m8a269fc[m [refactor] add third level
+[1;32m|[m * [33m44e3065[m [refactor] add second level
+[1;32m|[m *   [33mb519bfd[m Merge remote-tracking branch 'hector/dev' into dev
+[1;32m|[m [1;34m|[m[1;35m\[m  
+[1;32m|[m [1;34m|[m * [33mc5c1bd4[m[33m ([m[1;31mhector/dev[m[33m)[m [feat] rm_level3 completed
+[1;32m|[m [1;34m|[m * [33mbfdd347[m [add]
+[1;32m|[m * [1;35m|[m [33me9f0035[m [fix] car doesn't detec the grass
+[1;32m|[m [1;35m|[m[1;35m/[m  
+[1;32m|[m * [33md04424f[m[33m ([m[1;31mDeybby/dev[m[33m)[m [add] camera object and main menu functionality
+[1;32m|[m[1;32m/[m  
+*   [33m614fe9b[m Merge pull request #2 from MrDeybby/dev
+[1;36m|[m[31m\[m  
+[1;36m|[m * [33m980c16c[m [feat] menu for level selection and wall
+[1;36m|[m * [33m525b587[m [style] change the directory folder
+[1;36m|[m[1;36m/[m  
+*   [33m8919662[m Merge pull request #1 from Hector-RU/dev
+[32m|[m[33m\[m  
+[32m|[m * [33mae2336b[m [add] new objects, sprites and tilesets
+[32m|[m[32m/[m  
+* [33mc88fcd2[m[33m ([m[1;31msarah/main[m[33m, [m[1;31morigin/main[m[33m, [m[1;31mhector/main[m[33m, [m[1;31mDeybby/main[m[33m)[m Initial commit
