@@ -1,8 +1,9 @@
-n_bots = global.nn_config[$ "n"];
-select_pct = global.nn_config[$ "select"];
-mutation_prob = global.nn_config[$ "mut"];
+n_bots = global.ga_config[$ "n"];
+select_pct = global.ga_config[$ "select"];
+mutation_prob = global.ga_config[$ "mut"];
 
 n_generations = 0;
+
 
 best_gene = noone;
 best_reward = 0;
@@ -16,15 +17,17 @@ genes = ds_list_create();
 function create_bot(_hue = noone) {
 	
     var _bot = instance_create_layer(x, y, "Instances", obj_bot);
-    _bot.hue_shift = (_hue == noone) ? random_range(0, 360) : _hue;
+    _hue = (_hue == noone) ? random_range(0, 360) : _hue;
+	_bot.change_hue_shift(_hue);
     _bot.log_stats = false;
-	show_debug_message("Creating Bot | Hue:" + string(_bot.hue_shift))
+	// show_debug_message("Creating Bot | Hue:" + string(_bot.hue_shift))
     return _bot;
 	
 }
 
 // Inicializa población
 function init_gen(_n) {
+	bots_alive = _n;
     repeat(_n) {
         var _bot = create_bot();
         ds_list_add(bots, _bot);
@@ -93,7 +96,7 @@ function select_top(_genes, _percent)
     ds_list_sort(_ordered, true);
 
     // Cantidad a seleccionar
-    var _count = max(1, floor(_size * _percent));
+    var _count = max(1, ceil(_size * (_percent/100)));
 
     for (var i = 0; i < _count; i++) {
         array_push(_selected, _ordered[| i]);
@@ -112,7 +115,7 @@ function select_weighted(_genes, _percent)
 
     var _selected = [];
 	    // Cantidad a seleccionar
-    var _count = max(1, floor(_size * _percent));
+    var _count = max(1, ceil(_size * (_percent/100)));
 	
     // Calcular suma total de rewards
     var _total = 0;
@@ -232,7 +235,7 @@ function next_gen() {
         bot.neural_network.net.biases = child_biases;
         
         // Opcional: Mezclar color
-        bot.image_blend = merge_color(p1.hue, p2.hue, 0.5);
+        // bot.image_blend = merge_color(p1.hue, p2.hue, 0.5);
 
         ds_list_add(bots, bot);
     }
@@ -242,15 +245,15 @@ function next_gen() {
     ds_list_clear(genes);     // Limpiamos los genes viejos para la nueva ronda
 
     n_generations += 1;
-	show_debug_message("Best W of Gen:" + string(best_gene.weights))
-	show_debug_message("Best B of Gen:" + string(best_gene.biases))
-	show_debug_message("Best Reward:" + string(best_reward))
-	show_debug_message("Genes size: " + string(ds_list_size(genes)));
-	show_debug_message("best_gene is noone? " + string(best_gene == noone));
+	// show_debug_message("Best W of Gen:" + string(best_gene.weights))
+	// show_debug_message("Best B of Gen:" + string(best_gene.biases))
+	// show_debug_message("Best Reward:" + string(best_reward))
+	// show_debug_message("Bots size: " + string(ds_list_size(bots)));
 
 	
     // Si tu juego necesita reiniciar obstáculos:
     // room_restart();
+	bots_alive = n_bots;
 }
 
 // Inicializar primera generación
