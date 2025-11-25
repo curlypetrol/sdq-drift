@@ -26,6 +26,7 @@
     {"name":"obj_Game1","order":3,"path":"objects/obj_Game1/obj_Game1.yy",},
     {"name":"obj_Goal","order":1,"path":"objects/obj_Goal/obj_Goal.yy",},
     {"name":"obj_Goal1","order":2,"path":"objects/obj_Goal1/obj_Goal1.yy",},
+    {"name":"obj_Human","order":9,"path":"objects/obj_Human/obj_Human.yy",},
     {"name":"obj_level_button_ai","order":17,"path":"objects/obj_level_button_ai/obj_level_button_ai.yy",},
     {"name":"obj_level_button","order":1,"path":"objects/obj_level_button/obj_level_button.yy",},
     {"name":"obj_menu_control","order":18,"path":"objects/obj_menu_control/obj_menu_control.yy",},

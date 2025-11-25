@@ -5,7 +5,7 @@ global.OFFROAD_MIN = 11;
 global.OFFROAD_MAX = 20;
 
 /// Estados del jugador
-enum PlayerState { NORMAL, OIL, BOOST, DEAD };
+enum PlayerState { NORMAL, OIL, BOOST, DEAD, STOPPED };
 
 /// Devuelve true si si hay un tile en un pixel especíco, sirve para detectar el tipo de terreno en un area
 function tile_on_layer_at(layer_name, xp, yp) {
@@ -81,5 +81,5 @@ global.nn_config = {
 };
 
 global.aspect_ratio = display_get_gui_width() / display_get_gui_height();
-
+global.show_debug_rays = false;
 global.debug = true;

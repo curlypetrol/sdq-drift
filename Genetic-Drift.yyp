@@ -33,7 +33,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.1.210",
+    "IDEVersion":"2024.14.0.207",
   },
   "name":"Genetic-Drift",
   "resources":[
@@ -50,6 +50,7 @@
     {"id":{"name":"obj_genetic_algorithm","path":"objects/obj_genetic_algorithm/obj_genetic_algorithm.yy",},},
     {"id":{"name":"obj_Goal","path":"objects/obj_Goal/obj_Goal.yy",},},
     {"id":{"name":"obj_Goal1","path":"objects/obj_Goal1/obj_Goal1.yy",},},
+    {"id":{"name":"obj_Human","path":"objects/obj_Human/obj_Human.yy",},},
     {"id":{"name":"obj_level_button_ai","path":"objects/obj_level_button_ai/obj_level_button_ai.yy",},},
     {"id":{"name":"obj_level_button","path":"objects/obj_level_button/obj_level_button.yy",},},
     {"id":{"name":"obj_menu_control","path":"objects/obj_menu_control/obj_menu_control.yy",},},
