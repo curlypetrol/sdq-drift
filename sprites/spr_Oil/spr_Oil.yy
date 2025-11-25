@@ -19,7 +19,7 @@
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"ad2b1236-01aa-4ae7-8a93-42de040c39c5","blendMode":0,"displayName":"default","isLocked":false,"name":"ad2b1236-01aa-4ae7-8a93-42de040c39c5","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":false,},
+    {"$GMImageLayer":"","%Name":"ad2b1236-01aa-4ae7-8a93-42de040c39c5","blendMode":0,"displayName":"default","isLocked":false,"name":"ad2b1236-01aa-4ae7-8a93-42de040c39c5","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_Oil",
   "nineSlice":null,
