@@ -1,3 +1,5 @@
+fitness = (checkpoints_passed * 10) + (time_alive * 0.01);
+fitness = (checkpoints_passed * 10);
 // Exportar genes
 if (instance_exists(neural_network) && instance_exists(obj_genetic_algorithm)) {
     

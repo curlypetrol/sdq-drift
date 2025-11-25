@@ -29,7 +29,7 @@ var _dist_now = point_distance(start_x, start_y, x, y);
 if (_dist_now > distance_traveled) {
     distance_traveled = _dist_now;
 }
-fitness = distance_traveled + (time_alive * 0.1);
+
 
 // Proceso IA
 var _inputs = get_sensor_matrix();
@@ -76,6 +76,7 @@ input_right = (_val_right > _thresh);
 
 // Aplicar físicas
 event_inherited();
+
 
 // Visualizador debug
 if (global.debug && log_stats) {

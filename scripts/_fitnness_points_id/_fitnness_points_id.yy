@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"_fitnness_points_id",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_fitnness_points_id",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

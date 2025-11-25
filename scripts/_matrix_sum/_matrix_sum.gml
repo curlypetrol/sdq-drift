@@ -1,4 +1,5 @@
 function _matrix_sum(a, b){
+	
 	// Get dimensions of arrays
 	var am, an, bm, bn; // rows/columns in array a/b
 	am = array_length(a);

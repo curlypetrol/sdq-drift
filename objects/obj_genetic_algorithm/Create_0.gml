@@ -20,7 +20,7 @@ function create_bot(_hue = noone) {
     _hue = (_hue == noone) ? random_range(0, 360) : _hue;
 	_bot.change_hue_shift(_hue);
     _bot.log_stats = false;
-	// show_debug_message("Creating Bot | Hue:" + string(_bot.hue_shift))
+	show_debug_message("Creating Bot | Hue:" + string(_bot.hue_shift))
     return _bot;
 	
 }
@@ -36,7 +36,7 @@ function init_gen(_n) {
 
 // Fitness function
 function calculate_fitness(_gene) {
-    return _gene.best_dist; 
+    return _gene.fitness; 
 }
 
 // Cruuce

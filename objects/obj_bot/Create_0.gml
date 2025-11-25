@@ -31,7 +31,11 @@ start_x = x;
 start_y = y;
 distance_traveled = 0;
 time_alive = 0;
+next_checkpoint = 0;
+checkpoints_passed = 0;
 fitness = 0;
+total_checkpoints = id_manager("total");
+
 
 // Variables para Debug en GUI
 last_inputs = array_create(11, 0); // Guardará lo que vieron los sensores
