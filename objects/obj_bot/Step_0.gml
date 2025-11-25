@@ -68,7 +68,7 @@ last_outputs[1] = _outputs[1][0]; // Decisión Derecha
 
 var _val_left = _outputs[0][0];  
 var _val_right = _outputs[1][0]; 
-var _thresh = 0.5;
+
 
 // Controlar inputs
 input_left = (_val_left > _thresh);

@@ -4,6 +4,7 @@ event_inherited();
 // Config bot
 is_bot = true;
 stuck_counter = 0;
+_thresh = 0.5;
 
 // Silenciar motor
 if (audio_is_playing(engine_sound_inst)) {
