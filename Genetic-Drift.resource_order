@@ -44,7 +44,7 @@
     {"name":"rm_lvl_AI2","order":8,"path":"rooms/rm_lvl_AI2/rm_lvl_AI2.yy",},
     {"name":"rm_lvl_AI3","order":9,"path":"rooms/rm_lvl_AI3/rm_lvl_AI3.yy",},
     {"name":"rm_lvl_AI4","order":10,"path":"rooms/rm_lvl_AI4/rm_lvl_AI4.yy",},
-    {"name":"rm_lvl_AI5","order":3,"path":"rooms/rm_lvl_AI5/rm_lvl_AI5.yy",},
+    {"name":"rm_lvl_AI5","order":11,"path":"rooms/rm_lvl_AI5/rm_lvl_AI5.yy",},
     {"name":"rm_lvl_AI6","order":4,"path":"rooms/rm_lvl_AI6/rm_lvl_AI6.yy",},
     {"name":"rm_lvl_AI7","order":5,"path":"rooms/rm_lvl_AI7/rm_lvl_AI7.yy",},
     {"name":"rm_menu_AI","order":20,"path":"rooms/rm_menu_AI/rm_menu_AI.yy",},
