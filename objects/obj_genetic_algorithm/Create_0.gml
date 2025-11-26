@@ -3,7 +3,7 @@ select_pct = global.ga_config[$ "select"];
 mutation_prob = global.ga_config[$ "mut"];
 
 n_generations = 0;
-custom_gene = global.custom_gene
+custom_gene = global.custom_gene;
 
 best_gene = noone;
 best_reward = 0;
@@ -11,32 +11,50 @@ best_reward = 0;
 bots = ds_list_create();
 genes = ds_list_create();
 
+// --- BENCHMARK FEATURE: INICIO ---
+// Esto abrirá una ventana para que ELIJAS dónde guardar el archivo
+var _path = get_save_filename("Text file|*.txt", "ga_benchmark_output.txt");
+
+if (_path != "") {
+    benchmark_filename = _path; // Usamos la ruta que tú elijas (elijan la carpeta z.outputs porfa)
+    
+    // Escribimos cabeceras solo si el archivo está vacío o lo queremos sobrescribir
+    var _f = file_text_open_write(benchmark_filename);
+    file_text_write_string(_f, "Generation,Fitness,Hue,Weights_JSON");
+    file_text_writeln(_f);
+    file_text_close(_f);
+} else {
+    // Si cancelas la ventana, usamos un nombre por defecto (se guardará en el Sandbox oculto)
+    benchmark_filename = "ga_benchmark_output.txt";
+}
+// ---------------------------------
+
 #region Genetic Algorithm
 
 // Crea bot
 function create_bot(_hue = noone, normal = undefined) {
-	
+    
     var _bot = instance_create_layer(x, y, "Instances", obj_bot);
-	
+    
     _hue = (_hue == noone) ? random_range(0, 360) : _hue;
-	_bot.change_hue_shift(_hue);
+    _bot.change_hue_shift(_hue);
     _bot.log_stats = false;
-	
-	
-	var _bot_weights = undefined;
+    
+    
+    var _bot_weights = undefined;
     var _bot_biases = undefined;
-	
-	if (normal == true and custom_gene != undefined) {
-		_bot_weights = custom_gene.weights;
+    
+    if (normal == true and custom_gene != undefined) {
+        _bot_weights = custom_gene.weights;
         _bot_biases = custom_gene.biases;
         
         _bot.neural_network.net.weights = _bot_weights;
         _bot.neural_network.net.biases = _bot_biases;
-		show_debug_message("sE CREA EL MEJOR POBLADOR")
-	}
-	else if (custom_gene != undefined) {
-	
-	    _bot_weights = custom_gene.weights;
+        show_debug_message("sE CREA EL MEJOR POBLADOR")
+    }
+    else if (custom_gene != undefined) {
+    
+        _bot_weights = custom_gene.weights;
         _bot_biases = custom_gene.biases;
         
         _layers_count = array_length(_bot_weights);
@@ -47,22 +65,22 @@ function create_bot(_hue = noone, normal = undefined) {
 
         _bot.neural_network.net.weights = _bot_weights;
         _bot.neural_network.net.biases = _bot_biases;
-	}
+    }
     return _bot;
-	
+    
 }
 
 // Inicializa población
 function init_gen(_n) {
-	bots_alive = _n;
+    bots_alive = _n;
     for (var i = 0; i < _n; i++) {
-		var _bot = undefined
-		if (i = 0) {
-			_bot = create_bot(custom_gene.hue, true);
-		}
-	    _bot = create_bot();
-	    ds_list_add(bots, _bot);
-	}
+        var _bot = undefined
+        if (i = 0) {
+            _bot = create_bot(custom_gene.hue, true);
+        }
+        _bot = create_bot();
+        ds_list_add(bots, _bot);
+    }
 
 }
 
@@ -124,18 +142,18 @@ function select_top(_genes, _percent)
     for (var i = 0; i < _size; i++) {
         ds_list_add(_ordered, _genes[| i]);
     }
-	
-	for (var i = 0; i < ds_list_size(_ordered); i++) {
-	    for (var j = i+1; j < ds_list_size(_ordered); j++) {
+    
+    for (var i = 0; i < ds_list_size(_ordered); i++) {
+        for (var j = i+1; j < ds_list_size(_ordered); j++) {
 
-	        if (_ordered[| j].fitness > _ordered[| i].fitness) {
-	            var temp = _ordered[| i];
-	            _ordered[| i] = _ordered[| j];
-	            _ordered[| j] = temp;
-	        }
+            if (_ordered[| j].fitness > _ordered[| i].fitness) {
+                var temp = _ordered[| i];
+                _ordered[| i] = _ordered[| j];
+                _ordered[| j] = temp;
+            }
 
-	    }
-	}
+        }
+    }
 
     // Cantidad a seleccionar
     var _count = max(1, ceil(_size * (_percent/100)));
@@ -156,9 +174,9 @@ function select_weighted(_genes, _percent)
     if (_size == 0) return [];
 
     var _selected = [];
-	    // Cantidad a seleccionar
+        // Cantidad a seleccionar
     var _count = max(1, ceil(_size * (_percent/100)));
-	
+    
     // Calcular suma total de rewards
     var _total = 0;
     for (var i = 0; i < _size; i++) {
@@ -174,7 +192,7 @@ function select_weighted(_genes, _percent)
 
         for (var i = 0; i < _size; i++) {
             var _g = _genes[| i];
-            var _r = max(0.0001, _g.fitness);
+            var _r = max(0.0001, _g.fitness); 
             _accum += _r;
 
             if (_accum >= _pick) {
@@ -207,6 +225,28 @@ function next_gen() {
 
     update_best_gene();
     
+    // --- BENCHMARK FEATURE: CAPTURA DE DATOS ---
+    // Guardamos los datos justo después de actualizar quién fue el mejor de esta generación
+    if (best_gene != noone) {
+        var _file = file_text_open_append(benchmark_filename); // Abrir en modo append (agregar al final)
+        
+        // Empaquetamos pesos y biases en un JSON string
+        var _weights_json = json_stringify({
+            w: best_gene.weights,
+            b: best_gene.biases
+        });
+        
+        // Creamos la línea CSV: Generación, Fitness, Hue, JSON
+        var _line = string(n_generations) + "," + string(best_reward) + "," + string(best_gene.hue) + "," + _weights_json;
+        
+        file_text_write_string(_file, _line);
+        file_text_writeln(_file);
+        file_text_close(_file);
+        
+        show_debug_message("Benchmark guardado para Gen: " + string(n_generations));
+    }
+    // -------------------------------------------
+    
     // 1. CORRECCIÓN: Usar 'genes' en lugar de 'bots'
     var _top_array = select_top(genes, select_pct);
     
@@ -221,9 +261,9 @@ function next_gen() {
     ds_list_clear(bots);
     
     // Buscar al mejor (Elite)
-	
+    
     var elite_index = 0;
-	show_debug_message("Mejor gen: " + string(best_gene));
+    show_debug_message("Mejor gen: " + string(best_gene));
     
     // --- BUCLE DE CREACIÓN DE NUEVA POBLACIÓN ---
     for (var i = 0; i < n_bots; i++) {
@@ -239,14 +279,14 @@ function next_gen() {
             
             // Si es el mejor absoluto, le ponemos la corona y activamos debug
             if (i == elite_index){
-				new_parent.best_gene = true;
+                new_parent.best_gene = true;
                 new_parent.log_stats = true;
 
             } else {
-				new_parent.best_gene = false;
+                new_parent.best_gene = false;
                 new_parent.log_stats = false;
-			}
-			
+            }
+            
             ds_list_add(bots, new_parent);
             continue;
         }
@@ -289,15 +329,15 @@ function next_gen() {
     ds_list_clear(genes);     // Limpiamos los genes viejos para la nueva ronda
 
     n_generations += 1;
-	// show_debug_message("Best W of Gen:" + string(best_gene.weights))
-	// show_debug_message("Best B of Gen:" + string(best_gene.biases))
-	// show_debug_message("Best Reward:" + string(best_reward))
-	// show_debug_message("Bots size: " + string(ds_list_size(bots)));
+    // show_debug_message("Best W of Gen:" + string(best_gene.weights))
+    // show_debug_message("Best B of Gen:" + string(best_gene.biases))
+    // show_debug_message("Best Reward:" + string(best_reward))
+    // show_debug_message("Bots size: " + string(ds_list_size(bots)));
 
-	
+    
     // Si tu juego necesita reiniciar obstáculos:
     // room_restart();
-	bots_alive = n_bots;
+    bots_alive = n_bots;
 }
 
 // Inicializar primera generación
