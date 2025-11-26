@@ -82,7 +82,7 @@ global.nn_config = {
 
 global.ga_config = {
 	
-	"n": 50,        // Población
+	"n": 10,        // Población
     "mut": 20,     // Probabilidad mutación (10%)
     "select": 60,  // Porcentaje selección
 	"time_alive": 5 // Segundos para matar un poblador si se atasca
