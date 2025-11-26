@@ -4,6 +4,7 @@ event_inherited();
 // Config bot
 is_bot = true;
 stuck_counter = 0;
+dont_avance_counter = 0;
 _thresh = 0.5;
 
 // Silenciar motor
@@ -121,7 +122,7 @@ function get_sensor_matrix() {
     if (_check(10)) _s[9] = cast_ray(45, obj_wall, false);   
     if (_check(11)) _s[10] = cast_ray(-45, obj_wall, false); 
 
-    // --- FILTRADO PARA LA RED (Igual que como lo arreglamos antes) ---
+    // --- FILTRADO PARA LA RED ---
     var _matrix = [];
     for(var i = 0; i < 11; i++) {
         if (_check(i+1)) {

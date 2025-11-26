@@ -1,11 +1,18 @@
 // Detectar si está atorado
-var _speed = speed;
+var _speed = point_distance(0, 0, vx, vy);
 
 if (_speed < 0.1) stuck_counter++;
 else stuck_counter = 0; 
 
+dont_avance_counter++
 
-if (state == PlayerState.STOPPED and stuck_counter >= room_speed * global.ga_config[$ "time_alive"]) {
+
+if (stuck_counter >= room_speed * global.ga_config[$ "time_alive"]) {
+    instance_destroy();
+    exit;
+}
+
+if (dont_avance_counter >= room_speed * global.ga_config[$ "time_alive"]) {
     instance_destroy();
     exit;
 }
