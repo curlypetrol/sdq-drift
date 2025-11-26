@@ -3,7 +3,7 @@ select_pct = global.ga_config[$ "select"];
 mutation_prob = global.ga_config[$ "mut"];
 
 n_generations = 0;
-
+custom_gene = global.custom_gene
 
 best_gene = noone;
 best_reward = 0;
@@ -14,13 +14,40 @@ genes = ds_list_create();
 #region Genetic Algorithm
 
 // Crea bot
-function create_bot(_hue = noone) {
+function create_bot(_hue = noone, normal = undefined) {
 	
     var _bot = instance_create_layer(x, y, "Instances", obj_bot);
+	
     _hue = (_hue == noone) ? random_range(0, 360) : _hue;
 	_bot.change_hue_shift(_hue);
     _bot.log_stats = false;
-	show_debug_message("Creating Bot | Hue:" + string(_bot.hue_shift))
+	
+	
+	var _bot_weights = undefined;
+    var _bot_biases = undefined;
+	
+	if (normal == true and custom_gene != undefined) {
+		_bot_weights = custom_gene.weights;
+        _bot_biases = custom_gene.biases;
+        
+        _bot.neural_network.net.weights = _bot_weights;
+        _bot.neural_network.net.biases = _bot_biases;
+		show_debug_message("sE CREA EL MEJOR POBLADOR")
+	}
+	else if (custom_gene != undefined) {
+	
+	    _bot_weights = custom_gene.weights;
+        _bot_biases = custom_gene.biases;
+        
+        _layers_count = array_length(_bot_weights);
+        for(var lay = 0; lay < _layers_count; lay++) {
+             _bot_weights[lay] = random_bias_mutate(_bot_weights[lay], mutation_prob, -0.5, 0.5, -1, 1);
+             _bot_biases[lay] = random_bias_mutate(_bot_biases[lay], mutation_prob, -0.5, 0.5, -1, 1);
+        }
+
+        _bot.neural_network.net.weights = _bot_weights;
+        _bot.neural_network.net.biases = _bot_biases;
+	}
     return _bot;
 	
 }
@@ -28,10 +55,15 @@ function create_bot(_hue = noone) {
 // Inicializa población
 function init_gen(_n) {
 	bots_alive = _n;
-    repeat(_n) {
-        var _bot = create_bot();
-        ds_list_add(bots, _bot);
-    }
+    for (var i = 0; i < _n; i++) {
+		var _bot = undefined
+		if (i = 0) {
+			_bot = create_bot(custom_gene.hue, true);
+		}
+	    _bot = create_bot();
+	    ds_list_add(bots, _bot);
+	}
+
 }
 
 // Fitness function
@@ -192,7 +224,6 @@ function next_gen() {
 	
     var elite_index = 0;
 	show_debug_message("Mejor gen: " + string(best_gene));
-	show_debug_message("Padre: " + string(parents[| 0]));
     
     // --- BUCLE DE CREACIÓN DE NUEVA POBLACIÓN ---
     for (var i = 0; i < n_bots; i++) {
@@ -211,7 +242,11 @@ function next_gen() {
 				new_parent.best_gene = true;
                 new_parent.log_stats = true;
 
-            }
+            } else {
+				new_parent.best_gene = false;
+                new_parent.log_stats = false;
+			}
+			
             ds_list_add(bots, new_parent);
             continue;
         }
@@ -267,6 +302,7 @@ function next_gen() {
 
 // Inicializar primera generación
 init_gen(n_bots);
+custom_gene = undefined
 bots[| n_bots - 1].log_stats = true;
 
 #endregion
