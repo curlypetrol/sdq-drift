@@ -1,32 +1,45 @@
 
-// 2. Lógica de "Cámara Espectador" (AGREGAR ESTO)
-var _viewer_found = false;
+var _best_bot = noone;
+var _max_fitness = -1;
 
-// Revisamos si todavía existe algún bot reportando estadísticas
-for (var i = 0; i < ds_list_size(bots); i++) {
+var _default_depth = layer_get_depth("Instances"); 
+
+var _size = ds_list_size(bots);
+
+for (var i = 0; i < _size; i++) {
     var _bot = bots[| i];
-    // Si el bot existe y tiene el permiso de log_stats
-    if (instance_exists(_bot) && _bot.log_stats) {
-        _viewer_found = true;
-        break; 
+
+    if (instance_exists(_bot)) {
+        _bot.image_blend = make_color_hsv(_bot.hue_shift, 200, 255);
+        _bot.depth = _default_depth;
+
+        // B) COMPARACIÓN: ¿Es este el mejor hasta ahora?
+        if (_bot.fitness > _max_fitness) {
+            _max_fitness = _bot.fitness;
+            _best_bot = _bot;
+        }
     }
 }
 
-// Si NO encontramos a nadie (el bot que mirábamos murió), asignamos uno nuevo
-if (!_viewer_found) {
-    for (var i = 0; i < ds_list_size(bots); i++) {
-        var _next_bot = bots[| i];
+if (instance_exists(_best_bot)) {
+    
+    // A) Destacar visualmente (Blanco y encima de todos)
+    _best_bot.image_blend = c_white; 
+    _best_bot.depth = _default_depth - 1000; 
+    
+    // B) Asignar a la cámara
+    if (instance_exists(obj_Camera)) {
+        obj_Camera.target = _best_bot;
+    }
+    
+    // C) Activar estadísticas y red neuronal
+    if (_best_bot.log_stats == false) {
+        with (obj_bot) { log_stats = false; }
         
-        // Buscamos el primer bot que esté vivo en la lista
-        if (instance_exists(_next_bot)) {
-            _next_bot.log_stats = true; // ¡Tú eres el elegido ahora!
-            
-            // Si también quieres que se vea su red neuronal (obj_nn_graph), actívala:
-            if (instance_exists(_next_bot.nn_viewer)) {
-                _next_bot.nn_viewer.visible = true;
-            }
-            
-            break; // Ya encontramos uno, dejamos de buscar
+        _best_bot.log_stats = true;
+        
+        if (instance_exists(_best_bot.nn_viewer)) {
+             _best_bot.nn_viewer.visible = true;
         }
     }
 }
