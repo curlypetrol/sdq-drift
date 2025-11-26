@@ -19,7 +19,7 @@ else {
 
 	    if (instance_exists(_bot)) {
 
-	        _bot.image_blend = make_color_hsv(_bot.hue_shift, 200, 255);
+	        // _bot.image_blend = make_color_hsv(_bot.hue_shift, 200, 255);
 	        _bot.depth = _default_depth;
 
 	        if (_bot.fitness > _max_alive_fitness) {
@@ -34,7 +34,7 @@ else {
 // 3. Si hay alguien que seguir…
 if (instance_exists(_target_bot)) {
 
-    // Píntalo blanco y ponlo al frente
+    // Ponnerlo al frente
     // _target_bot.image_blend = c_white;
     _target_bot.depth = _default_depth - 1000;
 
