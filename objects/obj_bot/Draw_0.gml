@@ -1,7 +1,7 @@
 
 draw_self(); 
 
-if (log_stats) {
+if (best_gene) {
 
     var _offset_dist = 16; 
     

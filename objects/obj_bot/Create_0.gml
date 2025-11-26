@@ -22,6 +22,8 @@ nn_viewer.network_ref = neural_network;
 nn_viewer.visible = false;
 
 log_stats = false; 
+best_gene = false;
+
 
 // Mascara de color
 hue_shift = noone // El color se da al crear el objeto en el algoritmo genetico
@@ -35,7 +37,7 @@ time_alive = 0;
 next_checkpoint = 0;
 checkpoints_passed = 0;
 fitness = 0;
-total_checkpoints = id_manager("total");
+new_fitness = 0;
 
 
 // Variables para Debug en GUI
