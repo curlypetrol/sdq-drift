@@ -106,6 +106,7 @@
     {"name":"spr_Lvl6Button","order":22,"path":"sprites/spr_Lvl6Button/spr_Lvl6Button.yy",},
     {"name":"spr_Lvl7Button","order":23,"path":"sprites/spr_Lvl7Button/spr_Lvl7Button.yy",},
     {"name":"spr_menus","order":3,"path":"sprites/spr_menus/spr_menus.yy",},
+    {"name":"spr_NNSetupButton","order":26,"path":"sprites/spr_NNSetupButton/spr_NNSetupButton.yy",},
     {"name":"spr_Oil","order":2,"path":"sprites/spr_Oil/spr_Oil.yy",},
     {"name":"spr_Oil1","order":3,"path":"sprites/spr_Oil1/spr_Oil1.yy",},
     {"name":"spr_OilSpot","order":4,"path":"sprites/spr_OilSpot/spr_OilSpot.yy",},

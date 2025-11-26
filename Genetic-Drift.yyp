@@ -33,7 +33,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.0.207",
+    "IDEVersion":"2024.14.1.210",
   },
   "name":"Genetic-Drift",
   "resources":[
@@ -139,6 +139,7 @@
     {"id":{"name":"spr_Lvl6Button","path":"sprites/spr_Lvl6Button/spr_Lvl6Button.yy",},},
     {"id":{"name":"spr_Lvl7Button","path":"sprites/spr_Lvl7Button/spr_Lvl7Button.yy",},},
     {"id":{"name":"spr_menus","path":"sprites/spr_menus/spr_menus.yy",},},
+    {"id":{"name":"spr_NNSetupButton","path":"sprites/spr_NNSetupButton/spr_NNSetupButton.yy",},},
     {"id":{"name":"spr_Oil","path":"sprites/spr_Oil/spr_Oil.yy",},},
     {"id":{"name":"spr_Oil1","path":"sprites/spr_Oil1/spr_Oil1.yy",},},
     {"id":{"name":"spr_OilSpot","path":"sprites/spr_OilSpot/spr_OilSpot.yy",},},

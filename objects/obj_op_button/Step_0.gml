@@ -28,8 +28,8 @@ btn_plus_x = val_x + val_w + gap_x;
 btn_plus_y = start_y;
 
 // --- Fila 2: Botón Configurar Red Neuronal ---
-btn_nn_w = 100;
-btn_nn_h = 100;
+btn_nn_w = 200;
+btn_nn_h = 70;
 btn_nn_x = room_width/2 - btn_nn_w/2;
 btn_nn_y = start_y + gap_y; // Debajo de las vueltas
 
