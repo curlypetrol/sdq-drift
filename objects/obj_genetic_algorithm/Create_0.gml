@@ -20,7 +20,7 @@ if (_path != "") {
     
     // Escribimos cabeceras solo si el archivo está vacío o lo queremos sobrescribir
     var _f = file_text_open_write(benchmark_filename);
-    file_text_write_string(_f, "Generation,Fitness,Hue,Weights_JSON");
+    file_text_write_string(_f, "Generation;Fitness;Hue;Weights_JSON");
     file_text_writeln(_f);
     file_text_close(_f);
 } else {
@@ -218,6 +218,45 @@ function select_parents(_genes) {
     return [_genes[| p1], _genes[| p2]];
 }
 
+function round2(v) {
+    return round(v * 100) / 100;
+}
+
+function round_matrix2(mat) {
+    var out = [];
+
+    var rows = array_length(mat);
+    for (var r = 0; r < rows; r++) {
+        var row = mat[r];
+        var cols = array_length(row);
+
+        var new_row = [];
+        for (var c = 0; c < cols; c++) {
+            array_push(new_row, round2(row[c]));
+        }
+
+        array_push(out, new_row);
+    }
+
+    return out;
+}
+function round_gene_weights_biases(gene) {
+    var new_w = [];
+    var new_b = [];
+
+    var layers = array_length(gene.weights);
+
+    for (var i = 0; i < layers; i++) {
+        array_push(new_w, round_matrix2(gene.weights[i]));
+        array_push(new_b, round_matrix2(gene.biases[i]));
+    }
+
+    return {
+        weights: new_w,
+        biases: new_b
+    };
+}
+
 
 // Nueva generación
 function next_gen() {
@@ -228,15 +267,17 @@ function next_gen() {
     // Guardamos los datos justo después de actualizar quién fue el mejor de esta generación
     if (best_gene != noone) {
         var _file = file_text_open_append(benchmark_filename); // Abrir en modo append (agregar al final)
+        var rounded_struct = round_gene_weights_biases(best_gene);
+		var _weights_json  = json_stringify(rounded_struct);
+
         
-        // Empaquetamos pesos y biases en un JSON string
-        var _weights_json = json_stringify({
-            w: best_gene.weights,
-            b: best_gene.biases
-        });
-        
+	    var _gen      = n_generations;
+	    var _fit      = round2(best_reward);
+	    var _hue      = round2(best_gene.hue);
+	    var _json     = _weights_json;
+	
         // Creamos la línea CSV: Generación, Fitness, Hue, JSON
-        var _line = string(n_generations) + "," + string(best_reward) + "," + string(best_gene.hue) + "," + _weights_json;
+        var _line = string(n_generations) + ";" + string(best_reward) + ";" + string(best_gene.hue) + ";" + _weights_json;
         
         file_text_write_string(_file, _line);
         file_text_writeln(_file);
@@ -246,7 +287,6 @@ function next_gen() {
     }
     // -------------------------------------------
     
-    // 1. CORRECCIÓN: Usar 'genes' en lugar de 'bots'
     var _top_array = select_top(genes, select_pct);
     
     parents = ds_list_create();
@@ -254,25 +294,23 @@ function next_gen() {
         ds_list_add(parents, _top_array[k]);
     }
     
-    var _size_parents = ds_list_size(parents); // Ahora sí funciona porque es una lista
+    var _size_parents = ds_list_size(parents);
     
-    // Limpiar bots anteriores
     ds_list_clear(bots);
-    
-    // Buscar al mejor (Elite)
-    
+
+ 
     var elite_index = 0;
     show_debug_message("Mejor gen: " + string(best_gene));
     
     // --- BUCLE DE CREACIÓN DE NUEVA POBLACIÓN ---
     for (var i = 0; i < n_bots; i++) {
         
-        // A) ELITISMO: Los mejores pasan directo sin cambios
+        // A) ELITISMO:
         if (i < _size_parents) {
-            var _parent_data = parents[| i]; // Accedemos a la lista con accesores
+            var _parent_data = parents[| i];
             
             var new_parent = create_bot(_parent_data.hue);
-            // Copiamos los pesos directamente
+
             new_parent.neural_network.net.weights = _parent_data.weights;
             new_parent.neural_network.net.biases = _parent_data.biases;
             
@@ -290,46 +328,44 @@ function next_gen() {
             continue;
         }
         
-        // B) REPRODUCCIÓN: Cruce y Mutación para el resto
+        // B) REPRODUCCIÓN:
         
-        // Seleccionamos 2 padres aleatorios de la lista de 'parents'
+        // Selccion de padres
         var parents_crossing = select_parents(parents);
         var p1 = parents_crossing[0];
         var p2 = parents_crossing[1];
         
-        // 3. CORRECCIÓN: Usar la función helper 'crossover_gene'
-        // Antes estabas llamando a crossover_matrix... directamente sobre el array de pesos,
-        // lo cual daría error. crossover_gene maneja el bucle por capas.
+        // 3. Cruce
+
         var child_struct = crossover_gene(p1, p2); 
         var child_weights = child_struct.weights;
         var child_biases = child_struct.biases;
         
-        // 4. CORRECCIÓN: Mutación por capas
-        // child_weights es un array de matrices. Debemos mutar capa por capa.
+        // 4. Mutación
         var _layers_count = array_length(child_weights);
         for(var lay = 0; lay < _layers_count; lay++) {
 
-             // child_weights[lay] = random_bias_mutate(child_weights[lay], mutation_prob, -0.75, 0.75, -1, 1);
-             // child_biases[lay] = random_bias_mutate(child_biases[lay], mutation_prob, -0.75, 0.75, -1, 1);
-			 
-			 child_weights[lay] = escalation_mutation(child_weights[lay], -1, 1, mutation_prob, 0.75);
-             child_biases[lay] =  escalation_mutation(child_biases[lay], -1, 1, mutation_prob, 0.75);
-			 
+			if(random(100) < 50){
+	            child_weights[lay] = random_bias_mutate(child_weights[lay], mutation_prob, -0.75, 0.75, -1, 1);
+	            child_biases[lay] = random_bias_mutate(child_biases[lay], mutation_prob, -0.75, 0.75, -1, 1);
+			} else {
+				child_weights[lay] = escalation_mutation(child_weights[lay], -1, 1, mutation_prob, 0.75);
+				child_biases[lay] =  escalation_mutation(child_biases[lay], -1, 1, mutation_prob, 0.75);
+			}
         }
 
         var bot = create_bot();
         bot.neural_network.net.weights = child_weights;
         bot.neural_network.net.biases = child_biases;
         
-        // Opcional: Mezclar color
         // bot.image_blend = merge_color(p1.hue, p2.hue, 0.5);
 
         ds_list_add(bots, bot);
     }
 
     // Limpieza de memoria
-    ds_list_destroy(parents); // Ya usamos la lista, la borramos
-    ds_list_clear(genes);     // Limpiamos los genes viejos para la nueva ronda
+    ds_list_destroy(parents);
+    ds_list_clear(genes);   
 
     n_generations += 1;
     // show_debug_message("Best W of Gen:" + string(best_gene.weights))
@@ -338,7 +374,6 @@ function next_gen() {
     // show_debug_message("Bots size: " + string(ds_list_size(bots)));
 
     
-    // Si tu juego necesita reiniciar obstáculos:
     // room_restart();
     bots_alive = n_bots;
 }
@@ -347,5 +382,7 @@ function next_gen() {
 init_gen(n_bots);
 custom_gene = undefined
 bots[| n_bots - 1].log_stats = true;
-
+// randomize();
+var s = random_get_seed();
+show_debug_message("Seed: " + string(s))
 #endregion

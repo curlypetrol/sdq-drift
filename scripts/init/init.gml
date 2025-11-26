@@ -8,6 +8,7 @@ global.custom_gene = undefined
 /// Estados del jugador
 enum PlayerState { NORMAL, OIL, BOOST, DEAD, STOPPED };
 
+
 /// Devuelve true si si hay un tile en un pixel especíco, sirve para detectar el tipo de terreno en un area
 function tile_on_layer_at(layer_name, xp, yp) {
     if (!layer_exists(layer_name)) return false;
@@ -68,8 +69,8 @@ function side_sign(x0, y0, nx, ny, px, py) {
 
 global.nn_config = {
     // Inputs (Máscaras para dibujar debug, todos true para empezar)
-    "x1": true, "x2": true, "x3": true, "x4": true, "x5": true,
-    "x6": true, "x7": true, "x8": true, "x9": true, "x10": true,
+    "x1": false, "x2": false, "x3": false, "x4": false, "x5": false,
+    "x6": false, "x7": false, "x8": false, "x9": true, "x10": true,
 	"x11": true,
     
     "inputs": 10,   // 10 Sensores
@@ -84,7 +85,7 @@ global.nn_config = {
 global.ga_config = {
 	
 	"n": 50,        // Población
-    "mut": 20,     // Probabilidad mutación
+    "mut": 40,     // Probabilidad mutación
     "select": 60,  // Porcentaje selección
 	"time_alive": 2 // Segundos para matar un poblador si se atasca
 };
