@@ -15,7 +15,7 @@ function random_bias_mutate(_matrix, _prob, _minv, _maxv, _minclip, _maxclip){
 	return _matrix
 }
 
-function escalation_mutation(_matrix, _prob = undefined, _factor = undefined){
+function escalation_mutation(_matrix, _minclip, _maxclip,  _prob = undefined, _factor = undefined){
 
     var rows = array_length(_matrix);
     var cols = array_length(_matrix[0]);
@@ -25,7 +25,8 @@ function escalation_mutation(_matrix, _prob = undefined, _factor = undefined){
     if (random(100) < _prob) {
         var i = irandom(rows - 1);
         var j = irandom(cols - 1);
-        _matrix[i][j] = _factor * _matrix[i][j];
+		
+        _matrix[i][j] = clamp(_factor * _matrix[i][j], _minclip, _maxclip);
     }
 
     return _matrix;

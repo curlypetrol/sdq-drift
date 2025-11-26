@@ -47,10 +47,9 @@ function create_bot(_hue = noone, normal = undefined) {
     if (normal == true and custom_gene != undefined) {
         _bot_weights = custom_gene.weights;
         _bot_biases = custom_gene.biases;
-        
+		_bot.change_hue_shift(custom_gene.hue)
         _bot.neural_network.net.weights = _bot_weights;
         _bot.neural_network.net.biases = _bot_biases;
-        show_debug_message("sE CREA EL MEJOR POBLADOR")
     }
     else if (custom_gene != undefined) {
     
@@ -59,8 +58,8 @@ function create_bot(_hue = noone, normal = undefined) {
         
         _layers_count = array_length(_bot_weights);
         for(var lay = 0; lay < _layers_count; lay++) {
-             _bot_weights[lay] = random_bias_mutate(_bot_weights[lay], mutation_prob, -0.5, 0.5, -1, 1);
-             _bot_biases[lay] = random_bias_mutate(_bot_biases[lay], mutation_prob, -0.5, 0.5, -1, 1);
+             _bot_weights[lay] = random_bias_mutate(_bot_weights[lay], 50, -0.75, 0.75, -1, 1);
+             _bot_biases[lay] = random_bias_mutate(_bot_biases[lay], 50, -0.75, 0.75, -1, 1);
         }
 
         _bot.neural_network.net.weights = _bot_weights;
@@ -76,7 +75,7 @@ function init_gen(_n) {
     for (var i = 0; i < _n; i++) {
         var _bot = undefined
         if (i = 0) {
-            _bot = create_bot(custom_gene.hue, true);
+            _bot = create_bot(noone, true);
         }
         _bot = create_bot();
         ds_list_add(bots, _bot);
@@ -309,9 +308,13 @@ function next_gen() {
         // child_weights es un array de matrices. Debemos mutar capa por capa.
         var _layers_count = array_length(child_weights);
         for(var lay = 0; lay < _layers_count; lay++) {
-             // Asumiendo que ya creaste el script random_bias_mutate que te pasé antes
-             child_weights[lay] = random_bias_mutate(child_weights[lay], mutation_prob, -0.75, 0.75, -1, 1);
-             child_biases[lay] = random_bias_mutate(child_biases[lay], mutation_prob, -0.75, 0.75, -1, 1);
+
+             // child_weights[lay] = random_bias_mutate(child_weights[lay], mutation_prob, -0.75, 0.75, -1, 1);
+             // child_biases[lay] = random_bias_mutate(child_biases[lay], mutation_prob, -0.75, 0.75, -1, 1);
+			 
+			 child_weights[lay] = escalation_mutation(child_weights[lay], -1, 1, mutation_prob, 0.75);
+             child_biases[lay] =  escalation_mutation(child_biases[lay], -1, 1, mutation_prob, 0.75);
+			 
         }
 
         var bot = create_bot();
