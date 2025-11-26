@@ -40,31 +40,32 @@ function create_bot(_hue = noone, normal = undefined) {
     _bot.change_hue_shift(_hue);
     _bot.log_stats = false;
     
-    
+
     var _bot_weights = undefined;
     var _bot_biases = undefined;
     
     if (normal == true and custom_gene != undefined) {
-        _bot_weights = custom_gene.weights;
-        _bot_biases = custom_gene.biases;
+		_bot_weights = matrix_copy(custom_gene.weights);
+		_bot_biases = matrix_copy(custom_gene.biases);
 		_bot.change_hue_shift(custom_gene.hue)
-        _bot.neural_network.net.weights = _bot_weights;
-        _bot.neural_network.net.biases = _bot_biases;
+		new_gens = {weights: _bot_weights, biases: _bot_biases};
+		_bot.neural_network.set_genes(new_gens)
+		_bot.fitness = 100;
+		
     }
     else if (custom_gene != undefined) {
-    
-        _bot_weights = custom_gene.weights;
-        _bot_biases = custom_gene.biases;
-        
+		_bot_weights = matrix_copy(custom_gene.weights);
+		_bot_biases = matrix_copy(custom_gene.biases);
         _layers_count = array_length(_bot_weights);
         for(var lay = 0; lay < _layers_count; lay++) {
              _bot_weights[lay] = random_bias_mutate(_bot_weights[lay], 50, -0.75, 0.75, -1, 1);
              _bot_biases[lay] = random_bias_mutate(_bot_biases[lay], 50, -0.75, 0.75, -1, 1);
         }
 
-        _bot.neural_network.net.weights = _bot_weights;
-        _bot.neural_network.net.biases = _bot_biases;
+        new_gens = {weights: _bot_weights, biases: _bot_biases};
+		_bot.neural_network.set_genes(new_gens)
     }
+	show_debug_message(string(_bot.neural_network.net.weights))
     return _bot;
     
 }
@@ -74,10 +75,11 @@ function init_gen(_n) {
     bots_alive = _n;
     for (var i = 0; i < _n; i++) {
         var _bot = undefined
-        if (i = 0) {
+        if (i == 0) {
             _bot = create_bot(noone, true);
-        }
-        _bot = create_bot();
+        } else {
+			_bot = create_bot();
+		}
         ds_list_add(bots, _bot);
     }
 
@@ -382,7 +384,7 @@ function next_gen() {
 init_gen(n_bots);
 custom_gene = undefined
 bots[| n_bots - 1].log_stats = true;
-// randomize();
+randomize();
 var s = random_get_seed();
 show_debug_message("Seed: " + string(s))
 #endregion

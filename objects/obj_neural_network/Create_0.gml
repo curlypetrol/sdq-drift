@@ -62,8 +62,9 @@ function get_genes() {
 
 // Asignar genes
 function set_genes(_gene_struct) {
-    net.weights = _gene_struct.weights;
-    net.biases = _gene_struct.biases;
+	
+    net.weights = matrix_copy(_gene_struct.weights);
+    net.biases = matrix_copy(_gene_struct.biases)
 }
 
 // Configurar salidas

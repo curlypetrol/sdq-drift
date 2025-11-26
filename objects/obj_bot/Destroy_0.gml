@@ -3,7 +3,7 @@ if (level_completed) {
 	new_fitness = 5000 + (checkpoints_passed * 10) - (time_alive * 0.01);
 }
 else {
-	new_fitness = (checkpoints_passed * 10) + (time_alive * 0.05);
+	new_fitness = (checkpoints_passed * 10) + (time_alive * 0.02);
 }
 
 if new_fitness > fitness {
