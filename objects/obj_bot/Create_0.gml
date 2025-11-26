@@ -38,6 +38,7 @@ next_checkpoint = 0;
 checkpoints_passed = 0;
 fitness = 0;
 new_fitness = 0;
+level_completed = false;
 
 
 // Variables para Debug en GUI

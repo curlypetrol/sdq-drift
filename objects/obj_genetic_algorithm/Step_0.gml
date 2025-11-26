@@ -55,3 +55,4 @@ if (instance_exists(_target_bot)) {
         }
     }
 }
+

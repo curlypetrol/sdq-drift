@@ -33,7 +33,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.1.210",
+    "IDEVersion":"2024.14.0.207",
   },
   "name":"Genetic-Drift",
   "resources":[
@@ -48,7 +48,9 @@
     {"id":{"name":"obj_fitness_point","path":"objects/obj_fitness_point/obj_fitness_point.yy",},},
     {"id":{"name":"obj_Game","path":"objects/obj_Game/obj_Game.yy",},},
     {"id":{"name":"obj_Game1","path":"objects/obj_Game1/obj_Game1.yy",},},
+    {"id":{"name":"obj_gen_editor","path":"objects/obj_gen_editor/obj_gen_editor.yy",},},
     {"id":{"name":"obj_genetic_algorithm","path":"objects/obj_genetic_algorithm/obj_genetic_algorithm.yy",},},
+    {"id":{"name":"obj_go_gen_room","path":"objects/obj_go_gen_room/obj_go_gen_room.yy",},},
     {"id":{"name":"obj_Goal","path":"objects/obj_Goal/obj_Goal.yy",},},
     {"id":{"name":"obj_Goal1","path":"objects/obj_Goal1/obj_Goal1.yy",},},
     {"id":{"name":"obj_Human","path":"objects/obj_Human/obj_Human.yy",},},
@@ -68,6 +70,7 @@
     {"id":{"name":"obj_Rock1","path":"objects/obj_Rock1/obj_Rock1.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"Object30","path":"objects/Object30/Object30.yy",},},
+    {"id":{"name":"rm_gen_editor","path":"rooms/rm_gen_editor/rm_gen_editor.yy",},},
     {"id":{"name":"rm_Level1","path":"rooms/rm_Level1/rm_Level1.yy",},},
     {"id":{"name":"rm_Level2","path":"rooms/rm_Level2/rm_Level2.yy",},},
     {"id":{"name":"rm_Level3","path":"rooms/rm_Level3/rm_Level3.yy",},},
@@ -212,6 +215,7 @@
     {"roomId":{"name":"rm_lvl_AI6","path":"rooms/rm_lvl_AI6/rm_lvl_AI6.yy",},},
     {"roomId":{"name":"rm_lvl_AI7","path":"rooms/rm_lvl_AI7/rm_lvl_AI7.yy",},},
     {"roomId":{"name":"rm_nn_config","path":"rooms/rm_nn_config/rm_nn_config.yy",},},
+    {"roomId":{"name":"rm_gen_editor","path":"rooms/rm_gen_editor/rm_gen_editor.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

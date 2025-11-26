@@ -1,11 +1,17 @@
-// fitness = (checkpoints_passed * 10) + (time_alive * 0.01);
-new_fitness = (checkpoints_passed * 10);
+#region fitness
+if (level_completed) {
+	new_fitness = 5000 + (checkpoints_passed * 10) - (time_alive * 0.01);
+}
+else {
+	new_fitness = (checkpoints_passed * 10) + (time_alive * 0.05);
+}
 
 if new_fitness > fitness {
 	
 	fitness = new_fitness	
 }
 
+#endregion
 // Exportar genes
 if (instance_exists(neural_network) && instance_exists(obj_genetic_algorithm)) {
     

@@ -4,26 +4,10 @@ global.ASPHALT_MAX = 10;
 global.OFFROAD_MIN = 11;
 global.OFFROAD_MAX = 20;
 
-global.custom_gene = { biases : [ [ [ -0.80 ],[ -0.11 ],[ -0.79 ],[ 0.67 ],[ 0.00 ],[ 0.29 ],[ -0.82 ],[ -0.81 ] ],[ [ -0.98 ],[ 0.80 ],[ -0.40 ],[ -0.11 ] ],[ [ 0.89 ],[ -0.22 ],[ -0.95 ],[ 0.69 ],[ 0.87 ],[ 0.58 ] ],[ [ 1.00 ],[ 1 ] ],[ [ -0.77 ],[ -0.31 ] ] ], 
-	weights : [ [ 
-	[ 0.76,0.35,-0.04,-0.61,0.58,0.08,-0.60,-0.29,1,0.83,-0.87 ],
-	[ -0.46,0.97,-0.31,1,1,0.58,0.49,0.16,-0.23,0.03,0.66 ],
-	[ -0.50,-0.05,-0.51,0.14,0.96,0.15,0.01,-0.38,-0.74,-0.25,-0.04 ],
-	[ -0.08,0.30,-0.20,0.46,-0.49,0.90,-0.74,0.85,0.15,0.18,0.63 ],
-	[ -0.75,0.76,-0.42,0.19,0.46,1,-0.75,0.23,-0.21,0.02,-0.47 ],
-	[ -1,-0.05,-0.23,0.50,0.13,0.81,-0.62,0.06,-0.85,1.00,-0.52 ],
-	[ -0.46,0.05,0.06,0.45,0.89,0.76,0.70,-0.12,-0.41,0.61,0.15 ],
-	[ 0.37,-0.48,-0.18,0.68,-0.45,0.27,-0.50,0.84,-0.97,0.67,0.58 ] ],
-	[ 
-	[ 0.45,-0.29,0.18,-0.18,0.64,-0.41,0.23,-0.83 ],
-	[ 0.43,-0.55,-0.01,0.25,0.14,0.90,-0.88,0.71 ],
-	[ -0.73,-0.10,-0.25,0.71,-0.88,0.44,1,0.02 ],
-	[ 0.61,-0.07,-0.52,-0.99,0.19,0.76,0.41,0.10 ] 
-	]
-	,[ [ 0.15,0.01,0.69,-0.06 ],[ -0.14,0.06,0.03,1 ],[ 0.03,0.00,0.74,0.25 ],[ -0.22,-0.80,0.16,0.01 ],[ 0.37,0.34,0.98,-0.90 ],[ 0.33,0.11,-1.00,-0.54 ] ],[ [ -0.91,0.82,-0.41,-0.24,-0.64,-0.41 ],[ 0.92,0.94,-0.12,-0.76,-0.79,0.35 ] ],[ [ 0.38,-0.17 ],[ 0.24,0.38 ] ] ], hue : 81.41};
-
+global.custom_gene = undefined
 /// Estados del jugador
 enum PlayerState { NORMAL, OIL, BOOST, DEAD, STOPPED };
+
 
 /// Devuelve true si si hay un tile en un pixel especíco, sirve para detectar el tipo de terreno en un area
 function tile_on_layer_at(layer_name, xp, yp) {
@@ -85,25 +69,25 @@ function side_sign(x0, y0, nx, ny, px, py) {
 
 global.nn_config = {
     // Inputs (Máscaras para dibujar debug, todos true para empezar)
-    "x1": true, "x2": true, "x3": true, "x4": true, "x5": true,
-    "x6": true, "x7": true, "x8": true, "x9": true, "x10": true,
+    "x1": false, "x2": false, "x3": false, "x4": false, "x5": false,
+    "x6": false, "x7": false, "x8": false, "x9": true, "x10": true,
 	"x11": true,
     
     "inputs": 10,   // 10 Sensores
-    "h1": 8,        // 8 Neuronas capa oculta
-    "h2": 4,
-	"h3": 6,
-	"h4": 2,
+    "h1": 12,        // 8 Neuronas capa oculta
+    "h2": 8,
+	"h3": 0,
+	"h4": 0,
 	"outputs": 2,   // 2 Salidas (Izquierda, Derecha)
-	"sensor_range": 400 // Rango de visión
+	"sensor_range": 500 // Rango de visión
 };
 
 global.ga_config = {
 	
-	"n": 10,        // Población
-    "mut": 20,     // Probabilidad mutación (10%)
+	"n": 50,        // Población
+    "mut": 40,     // Probabilidad mutación
     "select": 60,  // Porcentaje selección
-	"time_alive": 5 // Segundos para matar un poblador si se atasca
+	"time_alive": 2 // Segundos para matar un poblador si se atasca
 };
 
 global.aspect_ratio = display_get_gui_width() / display_get_gui_height();

@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":28.56,
+  "duration":-1.0,
   "exportDir":"",
   "name":"snd_acceleration",
   "parent":{
