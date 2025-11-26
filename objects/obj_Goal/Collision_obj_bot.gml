@@ -1,0 +1,1 @@
+other.checkpoints_passed += 500

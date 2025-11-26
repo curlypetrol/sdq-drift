@@ -201,7 +201,8 @@ function next_gen() {
             // Si es el mejor absoluto, le ponemos la corona y activamos debug
             if (i == elite_index){
                 // new_parent.crown.visible = true;
-                new_parent.log_stats = true;    
+                new_parent.log_stats = true;
+
             }
             ds_list_add(bots, new_parent);
             continue;
