@@ -78,6 +78,7 @@ function update_best_gene() {
     }
 }
 
+
 // Seleccion por estilismo
 function select_top(_genes, _percent)
 {
@@ -87,13 +88,22 @@ function select_top(_genes, _percent)
     var _selected = [];
     var _ordered = ds_list_create();
 
-    // Copiar para no dañar la original
+    
     for (var i = 0; i < _size; i++) {
         ds_list_add(_ordered, _genes[| i]);
     }
+	
+	for (var i = 0; i < ds_list_size(_ordered); i++) {
+	    for (var j = i+1; j < ds_list_size(_ordered); j++) {
 
-    // Ordenar por reward descendente
-    ds_list_sort(_ordered, true);
+	        if (_ordered[| j].fitness > _ordered[| i].fitness) {
+	            var temp = _ordered[| i];
+	            _ordered[| i] = _ordered[| j];
+	            _ordered[| j] = temp;
+	        }
+
+	    }
+	}
 
     // Cantidad a seleccionar
     var _count = max(1, ceil(_size * (_percent/100)));
@@ -121,7 +131,7 @@ function select_weighted(_genes, _percent)
     var _total = 0;
     for (var i = 0; i < _size; i++) {
         var _g = _genes[| i];
-        var _r = max(0.0001, _g.best_dist); 
+        var _r = max(0.0001, _g.fitness); 
         _total += _r;
     }
 
@@ -132,7 +142,7 @@ function select_weighted(_genes, _percent)
 
         for (var i = 0; i < _size; i++) {
             var _g = _genes[| i];
-            var _r = max(0.0001, _g.best_dist);
+            var _r = max(0.0001, _g.fitness);
             _accum += _r;
 
             if (_accum >= _pick) {
@@ -161,18 +171,13 @@ function select_parents(_genes) {
 
 
 // Nueva generación
-// Nueva generación
 function next_gen() {
 
     update_best_gene();
     
     // 1. CORRECCIÓN: Usar 'genes' en lugar de 'bots'
-    // 'genes' tiene la info guardada al morir. 'bots' son instancias activas (que ya no sirven aquí).
-    // select_top devuelve un ARRAY.
     var _top_array = select_top(genes, select_pct);
     
-    // 2. CORRECCIÓN: Convertir Array a DS List
-    // Para que las funciones select_parents y ds_list_size funcionen, necesitamos una lista.
     parents = ds_list_create();
     for (var k = 0; k < array_length(_top_array); k++) {
         ds_list_add(parents, _top_array[k]);
@@ -184,7 +189,10 @@ function next_gen() {
     ds_list_clear(bots);
     
     // Buscar al mejor (Elite)
-    var elite_index = ds_list_find_index(parents, best_gene);
+	
+    var elite_index = 0;
+	show_debug_message("Mejor gen: " + string(best_gene));
+	show_debug_message("Padre: " + string(parents[| 0]));
     
     // --- BUCLE DE CREACIÓN DE NUEVA POBLACIÓN ---
     for (var i = 0; i < n_bots; i++) {
@@ -200,7 +208,7 @@ function next_gen() {
             
             // Si es el mejor absoluto, le ponemos la corona y activamos debug
             if (i == elite_index){
-                // new_parent.crown.visible = true;
+				new_parent.best_gene = true;
                 new_parent.log_stats = true;
 
             }
